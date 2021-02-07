@@ -1,4 +1,11 @@
-<%- include("partials/headerEntry"); -%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/styles.css">
+    </head>
+    <body>
+<section class="landing" id="landing">
 <div class="land-page">
     <div class="land-page-main">
         <div class="land-page-main-text-1">
@@ -8,9 +15,11 @@
             <h1 class="h-2">TO</h1>
         </div>
         <div class="land-page-main-text-3">
-            <h1 class="h-1"><span class="h-1-3">c</span>o<span class="h-1-2">n</span><span class="h-1-3">fe</span><span class="h-1-2">re</span>nce</h1>
+            <h1 class="h-1"><span class="h-1-3">c</span>o<span class="h-1-2">n</span><span class="h-1-3">fe</span><span class="h-1-2">re</span>n<span class="h-1-2-1">c</span>e</h1>
         </div>
     </div>
-    <button class="land-page-btn">JOIN</button>
+    <button onclick="window.location.href = '/authentication'" class="land-page-btn">JOIN</button>
 </div>
-<%- include("partials/footerEntry"); -%>
+</section>
+</body>
+</html>

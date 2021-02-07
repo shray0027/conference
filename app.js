@@ -10,6 +10,9 @@ app.use(express.static("public"));
 app.get("/",(req,res)=>{
     res.render("index");
 })
+app.get("/authentication",(req,res)=>{
+    res.render("login");
+})
 let port = process.env.PORT || 3000;
 app.listen(port,()=>{
     console.log("server is deployed on port 3000");
