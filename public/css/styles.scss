@@ -29,6 +29,7 @@ body {
     height: 100vh;
     display:flex;
     justify-content: center;
+    position: relative;
     #{&}-main{
         margin: auto;
         width: 590px;
@@ -44,8 +45,27 @@ body {
         }
         &-text-3{
             position:absolute;
-            right: 40px;
+            right: 10px;
             bottom: 30%;
+        }
+    }
+    #{&}-btn{
+        position: absolute;
+        height: 60px;
+        width: 130px;
+        bottom:15%;
+        right :20%;
+        background: #545454;
+        border:none;
+        color:#2d2d2d;
+        font-size: 36px;
+        font-weight: 500;
+        border-radius: 10px;
+        font-family:map-get($font-set,rbs);
+        &:hover{
+            border: 2px solid #777;
+            color: #777;
+            background: black;
         }
     }
 }
@@ -59,6 +79,9 @@ body {
         color:map-get($logo-set-color,big);
     }
     #{&}-2{
+        color:white;
+    }
+    #{&}-3{
         color:map-get($logo-set-color,med);
     }
 }
