@@ -8,6 +8,9 @@
 @keyframes animateright{
     from{right:-300px;opacity:0} to{right:0;opacity:1}
 }
+@keyframes animatetop{
+    from{top:-300px;opacity:0} to{top:0;opacity:1}
+}
 $primary-color : #2c2c2c;
 $logo-set-color:(
     "big" : #2E9CDB,
@@ -140,6 +143,7 @@ body {
     color: white;
     font-size: 40px;
     margin: auto;
+    animation: fading 1s;
 }
 .black-h1{
     color: black;
@@ -155,6 +159,7 @@ body {
         opacity: 1;
         box-shadow: 0 5px 5px #777
     }
+    animation:animatetop 1s;
 }
 .page-main-full,.page-main-full-a{
     display: flex;
@@ -196,6 +201,7 @@ body {
     height: 2px;
     background: white;
     opacity: 0.8;
+    animation: fading 1s;
 }
 @media(max-width :800px){
     body{
