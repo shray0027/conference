@@ -10,14 +10,44 @@
             <h1 class="white-h1">or</h1>
         </div>
         <div class="page-main-full">
-                <div class="half-div" style="animation: animateleft 1s;">
+                <div class="half-div" onclick="signup()" style="animation: animateleft 1s;">
                     <h1 class="black-h1">Sign up</h1>
                 </div>
                 <hr class="line">
-                <div class="half-div" style="margin-left: auto; animation: animateright 1s;">
+                <div class="half-div" onclick="login()" style="margin-left: auto; animation: animateright 1s;">
                     <h1 class="black-h1">Login</h1>
                 </div>
         </div>
+    </div>
+    <div class="auth-page-login">
+        
+            <div class="title">
+                <div class="half-div" style="margin: auto;">
+                    <h1 class="black-h1">
+                        Login
+                    </h1>
+                </div>
+            </div>
+            <form action="/options" class="form" method="POST">
+            <div class="full-div">
+                <input type="email" required placeholder="Email" class="white-input">
+            </div>
+            <div class="full-div">
+                <input type="password" required placeholder="password" class="white-input">
+            </div>
+            <div class="page-main-full full-login">
+                <div type="submit"  class="half-div submit" >
+                    <h1 class="black-h1">enter</h1>
+                </div>
+                <div class="half-div" onclick="back()" style="margin-left: auto;">
+                    <h1 class="black-h1">back</h1>
+                </div>
+            </div>
+        </form>
+        </div>
+
+    <div class="auth-page-signup">
+
     </div>
 </div>
 <%- include("partials/footerEntry"); -%>
