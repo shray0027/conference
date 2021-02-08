@@ -1,53 +1,65 @@
 <%- include("partials/headerEntry"); -%>
-<div class="auth-page">
-    <div class="auth-page-main">
-        <a class="page-main-full-a">
-            <div class="full-div">
-                <h1 class="black-h1">Sign up with <span class="google"><img class="logo" src="/img/google.png" alt="google logo"></span> <span class="disapear">oogle</span></h1>
-            </div>
-        </a>
-        <div class="auth-page-main-or">
-            <h1 class="white-h1">or</h1>
-        </div>
-        <div class="page-main-full">
-                <div class="half-div" onclick="signup()" style="animation: animateleft 1s;">
-                    <h1 class="black-h1">Sign up</h1>
-                </div>
-                <hr class="line">
-                <div class="half-div" onclick="login()" style="margin-left: auto; animation: animateright 1s;">
-                    <h1 class="black-h1">Login</h1>
-                </div>
-        </div>
-    </div>
-    <div class="auth-page-login">
-        
-            <div class="title">
-                <div class="half-div" style="margin: auto;">
-                    <h1 class="black-h1">
+	<div class="auth-page">
+		<div class="auth-page-main">
+			<a class="page-main-full-a">
+				<div class="full-div">
+					<h1 class="black-h1">Sign up with <span class="google"><img class="logo" src="/img/google.png" alt="google logo"></span> <span class="disapear">oogle</span></h1> </div>
+			</a>
+			<div class="auth-page-main-or">
+				<h1 class="white-h1">or</h1> </div>
+			<div class="page-main-full">
+				<div class="half-div" onclick="signup()" style="animation: animateleft 1s;">
+					<h1 class="black-h1">Sign up</h1> </div>
+				<hr class="line">
+				<div class="half-div" onclick="login()" style="margin-left: auto; animation: animateright 1s;">
+					<h1 class="black-h1">Login</h1> </div>
+			</div>
+		</div>
+		<div class="auth-page-login">
+			<div class="title">
+				<div class="half-div" style="margin: auto;">
+					<h1 class="black-h1">
                         Login
-                    </h1>
-                </div>
-            </div>
-            <form action="/options" class="form" method="POST">
-            <div class="full-div">
-                <input type="email" required placeholder="Email" class="white-input e">
-            </div>
-            <div class="full-div">
-                <input type="password" required placeholder="password" class="white-input">
-            </div>
-            <div class="page-main-full full-login">
-                <div type="submit"  class="half-div submit" >
-                    <h1 class="black-h1">enter</h1>
-                </div>
-                <div class="half-div" onclick="back()" style="margin-left: auto;">
-                    <h1 class="black-h1">back</h1>
-                </div>
-            </div>
-        </form>
-        </div>
-
-    <div class="auth-page-signup">
-
-    </div>
-</div>
-<%- include("partials/footerEntry"); -%>
+                    </h1> </div>
+			</div>
+			<div class="form-div">
+				<form action="/options" class="form" method="POST">
+					<div class="full-div">
+						<input type="email" required placeholder="Email" class="white-input"> </div>
+					<div class="full-div e">
+						<input type="password" required placeholder="password" class="white-input"> </div>
+					<div class="page-main-full full-login">
+						<div type="submit"     style="animation:animateleft 1s;" class="half-div submit">
+							<h1 class="black-h1">enter</h1> </div>
+						<div class="half-div"   style="animation:animateright 1s;" onclick="back()" style="margin-left: auto;">
+							<h1 class="black-h1">back</h1> </div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="auth-page-signup">
+			<div class="title">
+				<div class="half-div" style="margin: auto;">
+					<h1 class="black-h1">
+                        sign up
+                    </h1> </div>
+			</div>
+			<div class="form-div">
+				<form action="/options" class="form" method="POST" style="height: 400px;">
+					<div class="full-div">
+						<input type="email" required placeholder="Email" class="white-input"> </div>
+					<div class="full-div">
+						<input type="password" required placeholder="password" class="white-input"> </div>
+					<div class="full-div">
+						<input type="password" required placeholder="condirm password" class="white-input"> </div>
+					<div class="page-main-full full-login">
+						<div type="submit"    style="animation:animateleft 1s;" class="half-div submit">
+							<h1 class="black-h1">enter</h1> </div>
+						<div class="half-div"   style="animation:animateright 1s;" onclick="back()" style="margin-left: auto;">
+							<h1 class="black-h1">back</h1> </div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<%- include("partials/footerEntry"); -%>
