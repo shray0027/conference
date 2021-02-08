@@ -301,11 +301,17 @@ body {
     .h-2{
         font-size: 48px;
     }
+    .logo{
+        width: 36px;
+        height: 36px;
+    }
     .auth-page{
         #{&}-main,#{&}-login{
             width: 80%;
         }
-      
+        #{&}-login{
+            height: 80%;
+        }
     }
     .page-main-full,.page-main-full-a{
         display: flex;
@@ -337,6 +343,12 @@ body {
             -moz-box-shadow: 10px 10px 63px 0px rgba(0,0,0,0.8);
        
     }
+  
+    .white-input{
+        margin-top:10px;
+        margin-bottom: 10px;
+    }
+
     .line{
         display: block;
     }
