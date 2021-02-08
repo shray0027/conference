@@ -58,13 +58,20 @@ passport.deserializeUser(function(id, done) {
     done(err, user);
   });
 });
-app.get('/auth/google/optionss',
+app.get("/auth/google",
+  passport.authenticate("google", {
+    scope: ["profile"]
+  }));
+ 
+
+  app.get('/auth/google/options',
   passport.authenticate('google', {
     failureRedirect: '/authentication',
   }),
   function(req, res) {
     res.redirect('/options');
   });
+
 
 app.get("/",(req,res)=>{
     res.render("index");
