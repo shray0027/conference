@@ -1,19 +1,41 @@
-const div_login=document.querySelector(".auth-page-login");
-const div_signup=document.querySelector(".auth-page-signup");
-const div_main=document.querySelector(".auth-page-main")
+const menuBtn = document.querySelector(".menu-btn");
+const hamburger = document.querySelector(".menu-btn__burger");
+const nav = document.querySelector(".nav");
+const menuNav = document.querySelector(".menu-nav");
+const navItems = document.querySelectorAll(".menu-nav__item");
+const register = document.querySelector(".register");
+const login = document.querySelector(".login");
+const optBtn = document.querySelector(".optBtn")
+let showMenu =false;
+menuBtn.addEventListener('click',toggleMenu);
+function toggleMenu(){
+    if(!showMenu){
+        hamburger.classList.add("open");
+        nav.classList.add("open");
+        menuNav.classList.add("open");
+        navItems.forEach(item=>item.classList.add("open"));
+        showMenu=true;
+     } else {
+            hamburger.classList.remove("open");
+            nav.classList.remove("open");
+            menuNav.classList.remove("open");
+            navItems.forEach(item=>item.classList.remove("open"));
+            showMenu=false;
+        }
+}
 
-const login=()=>{
-    div_main.style.display="none";
-    div_signup.style.display="none";
-    div_login.style.display="flex";
-}
-const signup=()=>{
-    div_main.style.display="none";
-    div_login.style.display="none";
-    div_signup.style.display="flex";
-}
-const back=()=>{
-    div_main.style.display="flex";
-    div_login.style.display="none";
-    div_signup.style.display="none";
+let showLogin=false;
+function toggle(){
+    console.log("hello");
+    if(!showLogin){
+        register.style.display="block";
+        login.style.display="none";
+        showLogin=true;
+        optBtn.innerHTML="Sign in";
+    } else{
+        register.style.display="none";
+        login.style.display="block";
+        showLogin=false;
+        optBtn.innerHTML="Sign up";
+    }
 }

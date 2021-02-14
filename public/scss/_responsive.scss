@@ -1,0 +1,48 @@
+@include media-md {
+  .menu-logo{
+    &__title{
+      color:white;
+    }
+  }
+    .menu-btn {
+      visibility: hidden;
+    }
+  
+    .nav {
+      visibility: visible;
+  
+      .menu-nav {
+        display: block;
+        transform: translateY(0);
+        height: 100%;
+        -webkit-box-shadow: 0 10px 6px -6px #777;
+        -moz-box-shadow: 0 10px 6px -6px #777;
+             box-shadow: 0 10px 6px -6px #777;
+        text-align: right;
+  
+        &__item {
+          display: inline;
+          padding-right: 1.5rem;
+        }
+  
+        &__link {
+          font-size: 0.8rem;
+        }
+      }
+    }
+}
+@include media-sm{
+  .main{
+    &_wrap{
+      flex-direction: column;
+      &__pos{
+        width: 100%;
+        height:10%
+    }
+    &__form{
+        height: 90%;
+        width: 100%;
+    }
+    }
+  }
+}

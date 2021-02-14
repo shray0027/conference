@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+@import "./resets";
+@import "./animation";
+@import "./config";
+@import "./nav";
+@import "./mainform";
+@import "./responsive";
+body{
+    background:getBlue(back);
+    height: 100vh;
+    font-family: 'Lato',Helvetica, sans-serif;
+   
+}
+a {
+    color: white;
+    text-decoration: none;
+  }
+header{
+    z-index:2;
+    width:100%;
+    height: 58px;
+}
+.blueBtn{
+    background: white;
+    color:getBlue(nav);
+    border:1.5px solid getBlue(nav);
+    border-radius: 10px;
+    font-size: 1rem;
+    margin: auto;
+    font-weight: 400;
+    width:80%;
+    height: 100%;
+    &:hover{
+        background: getBlue(nav);
+        color:white;
+    }
+}
+
+.inform{
+    height: 100%;
+    width: 100;
+    display: flex;
+    flex-direction: column;
+}
+.register{
+    display: none;
+}
+.input_feilds{
+    flex-grow:1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: getBlue(nav);
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+input{
+    border:none;
+    background: white;
+    border-bottom: 2px solid getBlue(nav);
+    width: 100%;
+    font-size: 1rem;
+}
+.block{
+    margin:1.5rem auto;
+    width: 80%;
+}
+.center_btn{
+    margin: 2rem auto 1rem auto;
+    display:flex;
+    height:40px;
+    width: 100%;
+}
+.option-btn{
+    width: 75%;
+    height: 40px;
+    display: flex;
+    border-right: 2px solid getBlue(nav);
+}
+.google{
+    width: 25%;
+    height: 40px;
+    text-align: center;
+    display: flex;
+}
+i{
+    margin: auto;
+}

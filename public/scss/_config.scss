@@ -1,0 +1,38 @@
+$primary-color : #E9F8FF;
+$shades-blue:(
+    "front":#B7EBFE,
+    "border":#CEF1FD,
+    "back": #E9F8FF,
+    "nav": #141049
+);
+$logo-set-color:(
+    "big" : #2E9CDB,
+    "med": #eb5757,
+    "small": #26AE60
+);
+$font-set:(
+    "rb": "Roboto" ,
+    "rbs":"Roboto Slab"
+);
+@function getBlue($blue-shade){
+    @return map-get($shades-blue,$blue-shade);
+}
+@function logoColor($font-color){
+    @return map-get($logo-set-color,$font-color);
+}
+@function fontFamily($font-family){
+    @return map-get($font-set,$font-family);
+}
+@mixin transition-ease{
+    transition: all 0.5s ease-in-out;
+}
+@mixin media-md {
+    @media screen and (min-width: 768px) {
+      @content;
+    }
+  }
+@mixin media-sm{
+  @media screen and (max-width:768px){
+    @content;
+  }
+}

@@ -1,0 +1,12 @@
+@keyframes animateleft{
+    from{left:-300px;opacity:0} to{left:0;opacity:1}
+}
+@keyframes fading{
+    0%{opacity: 0}50%{opacity: 0.5}100%{opacity: 1;}
+}
+@keyframes animateright{
+    from{right:-300px;opacity:0} to{right:0;opacity:1}
+}
+@keyframes animatetop{
+    from{top:-300px;opacity:0} to{top:0;opacity:1}
+}
