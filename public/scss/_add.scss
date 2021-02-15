@@ -7,6 +7,7 @@
     background: linear-gradient(#46318a,#2b1f56);
     border-radius: 20px;
     position: relative;
+    z-index: -1;
 }
 .add_desc{
     height:200px;
@@ -22,6 +23,16 @@
     font-size: 4rem;
     font-weight:900 ;
     color: white;
+}
+.India{
+    background-color: orange;
+    background-image: linear-gradient(to left,orange,white,green);
+    background-size: 100%;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 700;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
 }
 .large{
     font-size: 7rem;

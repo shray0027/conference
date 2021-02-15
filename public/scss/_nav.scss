@@ -97,6 +97,7 @@
     padding-right: 1rem;
     transform: translateY(-100%);
     background: getBlue(nav);
+    z-index:100;
     @include transition-ease;
 
     &.open {
