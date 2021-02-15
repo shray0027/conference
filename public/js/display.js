@@ -5,7 +5,9 @@ const menuNav = document.querySelector(".menu-nav");
 const navItems = document.querySelectorAll(".menu-nav__item");
 const register = document.querySelector(".register");
 const login = document.querySelector(".login");
-const optBtn = document.querySelector(".optBtn")
+const optBtn = document.querySelector(".optBtn");
+const heading = document.querySelector(".changable");
+
 let showMenu =false;
 menuBtn.addEventListener('click',toggleMenu);
 function toggleMenu(){
@@ -32,10 +34,12 @@ function toggle(){
         login.style.display="none";
         showLogin=true;
         optBtn.innerHTML="Sign in";
+        heading.textContent="Sign up...";
     } else{
         register.style.display="none";
         login.style.display="block";
         showLogin=false;
         optBtn.innerHTML="Sign up";
+        heading.textContent="Login...";
     }
 }

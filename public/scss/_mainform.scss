@@ -18,14 +18,18 @@
             display: flex;
             flex-direction: column;
             &__description{
-                width:100%;
+                width:80%;
+                margin: 0  auto ;
                 margin-top: 100px;
-                display: flex;
                & > h1{
                 font-size: 3rem;
                 color:getBlue(nav);
-                margin-left:200px;
+                display: block;
                }
+            }
+            &__qoute{
+                width:80%;
+                margin: 4rem  auto ;
             }
         }
         &__form{
@@ -62,3 +66,14 @@
     }
 }
 
+.qoutes-content , .qoutes-author {
+    font-size: 1rem;
+    color:grey;
+    text-align: left;
+    font-style: italic;
+    font-weight: 500;
+}
+.qoutes-author {
+    margin-top: 2rem;
+    margin-right: 1rem;
+}

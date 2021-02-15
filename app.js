@@ -8,6 +8,7 @@ const session = require("express-session");
 const passportLocalMongoose=require("passport-local-mongoose");
 const findOrCreate = require("mongoose-findorcreate");
 const search = require(__dirname+"/utils/binarySearch.js");
+const qoutes = require(__dirname+"/utils/qoutes.js");
 const app=express();
 //MIDDLEWARES 
 
@@ -59,6 +60,12 @@ passport.serializeUser(function(user, done) {
 app.get("/",(req,res)=>{
     res.render("index");
 })
+app.get("/qoutes",(req,res)=>{
+  qoutes(callback=>{
+      res.send(
+        callback);
+  });
+})
 app.get("/login",(req,res)=>{
     res.render("login");
 });
@@ -97,21 +104,8 @@ app.post("/login", (req, res) => {
     });
   });
 
-app.get("/options/:id",(req,res)=>{
-    const id = req.params;
-    console.log(id.id);
-    if(req.isAuthenticated()){
-      User.findOne({_id:id.id},(err,user)=>{
-        if(err){
-          console.log(err);
-        } else {
-          res.render("options");
-        }
-      })
-        
-    } else {
-        res.redirect("/login");
-    }
+app.get("/options",(req,res)=>{
+   res.render("options");
 })
 let port = process.env.PORT || 3000;
 app.listen(port,()=>{
