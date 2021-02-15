@@ -7,6 +7,7 @@ const passport = require("passport");
 const session = require("express-session");
 const passportLocalMongoose=require("passport-local-mongoose");
 const findOrCreate = require("mongoose-findorcreate");
+const search = require(__dirname+"/utils/binarySearch.js");
 const app=express();
 //MIDDLEWARES 
 
@@ -31,6 +32,7 @@ mongoose.connect(url,{
 
 
   const userSchema=new mongoose.Schema({
+      name:String,
       password :String,
       username:String,
       googleId:String
@@ -61,42 +63,54 @@ app.get("/login",(req,res)=>{
     res.render("login");
 });
 app.post("/register",(req,res)=>{
+    let name = req.body.username;
+    name=search(name);
     User.register(
-       {username:req.body.email},
+       {username:req.body.username,name:name},
         req.body.password,
         (err,user)=>{
             if(err){
                 console.log(err);
             }
             passport.authenticate('local')(req,res,()=>{
-                res.redirect("/options");
+                res.render("options");
             })
         }
 
     )
 });
 app.post("/login", (req, res) => {
-    const user = new User({
+    const userN = new User({
       username: req.body.username,
       password: req.body.password
     });
-    req.login(user, function(err) {
+
+    req.login(userN, function(err) {
       if (err) {
         console.log(err);
         res.redirect("/login");
       } else {
-        passport.authenticate("local")(req, res, function() {
-              res.redirect("/options");
-        });
+        passport.authenticate('local')(req,res,()=>{
+          res.redirect("options/"+userN._id);
+      })
       }
     });
   });
 
-app.get("/options",(req,res)=>{
+app.get("/options/:id",(req,res)=>{
+    const id = req.params;
+    console.log(id.id);
     if(req.isAuthenticated()){
-        res.render("options");
+      User.findOne({_id:id.id},(err,user)=>{
+        if(err){
+          console.log(err);
+        } else {
+          res.render("options");
+        }
+      })
+        
     } else {
-        res.render("login");
+        res.redirect("/login");
     }
 })
 let port = process.env.PORT || 3000;
