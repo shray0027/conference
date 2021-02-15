@@ -1,89 +1,115 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
 @import "./resets";
+
 @import "./animation";
+
 @import "./config";
+
 @import "./nav";
+
 @import "./mainform";
+
 @import "./responsive";
+
+@import "./nav2";
+
 @import "./options";
-body{
-    background:getBlue(back);
-    height: 100vh;
-    font-family: 'Lato',Helvetica, sans-serif;
-   
-}
-a {
-    color: white;
-    text-decoration: none;
-  }
-header{
-    z-index:2;
-    width:100%;
-    height: 58px;
-}
-.blueBtn{
-    background: white;
-    color:getBlue(nav);
-    border:1.5px solid getBlue(nav);
-    border-radius: 10px;
-    font-size: 1rem;
-    margin: auto;
-    font-weight: 400;
-    width:80%;
-    height: 100%;
-    &:hover{
-        background: getBlue(nav);
-        color:white;
-    }
+
+@import "./add";
+
+body {
+  background: getBlue(back);
+  height: 100vh;
+  font-family: 'Lato',Helvetica, sans-serif;
 }
 
-.inform{
-    height: 100%;
-    width: 100;
-    display: flex;
-    flex-direction: column;
+a {
+  color: white;
+  text-decoration: none;
 }
-.register{
-    display: none;
+
+header {
+  z-index: 2;
+  width: 100%;
+  height: 58px;
 }
-.input_feilds{
-    flex-grow:1;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    color: getBlue(nav);
-    font-size: 1.5rem;
-    font-weight: 500;
+
+.blueBtn {
+  background: white;
+  color: getBlue(nav);
+  border: 1.5px solid getBlue(nav);
+  border-radius: 10px;
+  font-size: 1rem;
+  margin: auto;
+  font-weight: 400;
+  width: 80%;
+  height: 100%;
+       &:hover{
+        -webkit-box-shadow: 0 10px 6px -6px #777;
+        -moz-box-shadow: 0 10px 6px -6px #777;
+        box-shadow: 0 10px 6px -6px #777;
+        opacity: 0.98;
+        background: getBlue(nav);
+         color: white;
+       }
 }
-input{
-    border:none;
-    background: white;
-    border-bottom: 2px solid getBlue(nav);
-    width: 100%;
-    font-size: 1rem;
+
+.inform {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
-.block{
-    margin:1.5rem auto;
-    width: 80%;
+
+.register {
+  display: none;
 }
-.center_btn{
-    margin: 2rem auto 1rem auto;
-    display:flex;
-    height:40px;
-    width: 100%;
+
+.input_feilds {
+  flex-grow: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  color: getBlue(nav);
+  font-size: 1.5rem;
+  font-weight: 500;
 }
-.option-btn{
-    width: 75%;
-    height: 40px;
-    display: flex;
-    border-right: 2px solid getBlue(nav);
+
+input {
+  border: none;
+  background: white;
+  border-bottom: 2px solid getBlue(nav);
+  width: 100%;
+  font-size: 1rem;
 }
-.google{
-    width: 25%;
-    height: 40px;
-    text-align: center;
-    display: flex;
+
+.block {
+  margin: 1.5rem auto;
+  width: 80%;
 }
-i{
-    margin: auto;
+
+.center_btn {
+  margin: 2rem auto 1rem auto;
+  display: flex;
+  height: 40px;
+  width: 100%;
+}
+
+.option-btn {
+  width: 75%;
+  height: 40px;
+  display: flex;
+  border-right: 2px solid getBlue(nav);
+}
+
+.google {
+  width: 25%;
+  height: 40px;
+  text-align: center;
+  display: flex;
+}
+
+i {
+  margin: auto;
 }

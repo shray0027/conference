@@ -1,139 +1,138 @@
 .menu-logo{
-    display: flex;
-    flex-direction: row;
-    flex-flow: row wrap;
-    z-index: 3;
-    width:200px;
-    position: absolute;
-    top: 10px;
-    left: 20px;
-    &__img{
-        display: inline-block;
-        width:45px;
-        height:36px;
+  display: flex;
+  flex-direction: row;
+  flex-flow: row wrap;
+  z-index: 3;
+  width:200px;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  &__img{
+      display: inline-block;
+      width:45px;
+      height:36px;
 
-    }
-    &__title{     
-        display: flex;
-        margin: auto;
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: white;
-    }
+  }
+  &__title{     
+      display: flex;
+      margin: auto;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+  }
 }
 .menu-btn {
+  position: absolute;
+  z-index: 1;
+  right: 1rem;
+  top: 1rem;
+  height: 20px;
+  width: 28px;
+  cursor: pointer;
+  @include transition-ease;
+
+  &__burger {
     position: absolute;
-    z-index: 1;
-    right: 1rem;
-    top: 1rem;
-    height: 20px;
+    right: 0;
+    top: 0.5rem;
     width: 28px;
-    cursor: pointer;
+    height: 3px;
+    background:black;
     @include transition-ease;
-  
-    &__burger {
+
+    &::before {
+      content: '';
       position: absolute;
-      right: 0;
-      top: 0.5rem;
+      top: -8px;
       width: 28px;
+      height: 3px;
+      background: black;
+      @include transition-ease;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      width: 20px;
       height: 3px;
       background:black;
       @include transition-ease;
-  
-      &::before {
-        content: '';
-        position: absolute;
-        top: -8px;
-        width: 28px;
-        height: 3px;
-        background: black;
-        @include transition-ease;
-      }
-  
-      &::after {
-        content: '';
-        position: absolute;
-        top: 8px;
-        width: 20px;
-        height: 3px;
-        background:black;
-        @include transition-ease;
-      }
-  
-      &.open {
-        transform: rotate(720deg);
-        background: transparent;
-  
-        &::before {
-          transform: rotate(45deg) translate(5px, 8px);
-        }
-  
-        &::after {
-          width: 28px;
-          transform: rotate(-45deg) translate(3px, -7px);
-        }
-      }
     }
-  }
-  
-  .nav {
-    background: getBlue(nav);
-    width: 100vw;
-    opacity: 0.98;
-    visibility: hidden;
-  
+
     &.open {
-      visibility: visible;
+      transform: rotate(720deg);
+      background: transparent;
+
+      &::before {
+        transform: rotate(45deg) translate(5px, 8px);
+      }
+
+      &::after {
+        width: 28px;
+        transform: rotate(-45deg) translate(3px, -7px);
+      }
     }
-  
-    .menu-nav {
-      display: flex;
-      flex-flow: column wrap;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      overflow: hidden;
-      list-style-type: none;
-      padding-right: 1rem;
-      transform: translateY(-100%);
-      background: getBlue(nav);
+  }
+}
+
+.nav {
+  background: getBlue(nav);
+  width: 100vw;
+  opacity: 0.98;
+  visibility: hidden;
+
+  &.open {
+    visibility: visible;
+  }
+
+  .menu-nav {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    list-style-type: none;
+    padding-right: 1rem;
+    transform: translateY(-100%);
+    background: getBlue(nav);
+    @include transition-ease;
+
+    &.open {
+      transform: translateY(0);
+    }
+
+    &__item {
+      transform: translateX(100vw);
       @include transition-ease;
-  
+
       &.open {
-        transform: translateY(0);
+       transform: translateX(0); 
       }
-  
-      &__item {
-        transform: translateX(100vw);
-        @include transition-ease;
-  
-        &.open {
-         transform: translateX(0); 
-        }
-  
-        &.active > a {
-          font-weight:900;
-        }
-      }
-  
-      &__link {
-        display: inline-block;
-        font-size: 1.3rem;
-        text-transform: uppercase;
-        padding: 1.3rem 0;
-        font-weight: 500;
-        @include transition-ease;
-  
-        &:hover {
-          color: getBlue(front);
-        } 
+
+      &.active > a {
+        font-weight:900;
       }
     }
-  }
-  
-  @for $i from 1 through 4 {
-    .menu-nav__item:nth-child(#{$i}) {
-      transition-delay: ($i * 0.1s) + 0.15s;
+
+    &__link {
+      display: inline-block;
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      padding: 1.3rem 0;
+      font-weight: 500;
+      @include transition-ease;
+
+      &:hover {
+        color: getBlue(front);
+      } 
     }
   }
-  
+}
+
+@for $i from 1 through 4 {
+  .menu-nav__item:nth-child(#{$i}) {
+    transition-delay: ($i * 0.1s) + 0.15s;
+  }
+}
