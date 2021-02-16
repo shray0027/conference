@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import "./resets";
+@import "./config";
+@import "./nav";
+@import "./nav2";
+@import "./outside";
+@import "./responsive";
+
+@import "./animation";
+
+
+body {
+    background: getBlue(backgroundBlue);
+    background-image: url("/img/backgroundBlue.svg");
+    background-repeat: repeat-y;
+    background-size: 100vw 100vh;
+    height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Lato',Helvetica, sans-serif;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  header {
+    z-index: 2;
+    width: 100%;
+    height: 58px;
+  }
+  .nav{
+      box-shadow: none !important;
+      -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  }

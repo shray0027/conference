@@ -3,7 +3,8 @@ $shades-blue:(
     "front":#B7EBFE,
     "border":#CEF1FD,
     "back": #E9F8FF,
-    "nav": #141049
+    "nav": #141049,
+    "backgroundBlue":#0F235E
 );
 $logo-set-color:(
     "big" : #2E9CDB,
@@ -22,6 +23,10 @@ $font-set:(
 }
 @function fontFamily($font-family){
     @return map-get($font-set,$font-family);
+}
+@mixin flexp($direction){
+    display: flex;
+    flex-direction: $direction;
 }
 @mixin transition-ease{
     transition: all 0.5s ease-in-out;

@@ -107,6 +107,9 @@ app.post("/login", (req, res) => {
 app.get("/options",(req,res)=>{
    res.render("options");
 })
+app.get("/join",(req,res)=>{
+  res.render("join");
+})
 let port = process.env.PORT || 3000;
 app.listen(port,()=>{
     console.log("server is deployed on port 3000");
