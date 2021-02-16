@@ -9,6 +9,7 @@ const optBtn = document.querySelector(".optBtn");
 const heading = document.querySelector(".changable");
 const dis = document.querySelector(".dis");
 const add = document.querySelector(".add");
+const option = document.querySelector(".option_full_center");
 let showMenu = false;
 
 menuBtn.addEventListener('click', toggleMenu);
@@ -19,6 +20,8 @@ function toggleMenu() {
     nav.classList.add("open");
     menuNav.classList.add("open");
     navItems.forEach(item => item.classList.add("open"));
+    add.style.zIndex="-1";
+    option.style.zIndex="-1";
     showMenu = true;
   } else {
     hamburger.classList.remove("open");
@@ -26,6 +29,8 @@ function toggleMenu() {
     menuNav.classList.remove("open");
     navItems.forEach(item => item.classList.remove("open"));
     showMenu = false;
+    add.style.zIndex="1";
+    option.style.zIndex="1";
   }
 }
 
@@ -48,5 +53,6 @@ function toggle() {
   }
 }
 function remove(){
+  console.log("hello");
         add.style.display="none";
 }
