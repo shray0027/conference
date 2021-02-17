@@ -1,5 +1,5 @@
 .outside{
-    height: 100vh;
+    height: 120vh;
     width: 80%;
     margin: 2rem auto;
     #{&}_1{
@@ -20,7 +20,7 @@
                 width: 87%;
                 margin: auto;
                 margin:2rem auto;
-
+                margin-bottom: 40px;
                 &_cB{
                     width: 100%;
                     height:40px;
@@ -95,6 +95,7 @@
                             }
                         }
                         &_l2{
+                            width: 100%;
                             display:flex;
                             flex-direction:row;
                             &_img{
@@ -174,6 +175,7 @@
 }
 @media (max-width:768px){
     .outside{
+        height: 140vh;
         width: 100%;
         #{&}_1{
             width: 90%;

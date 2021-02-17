@@ -32,3 +32,18 @@ body {
       -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;
   }
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: none;
+    margin-right: 2px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background:rgb(41, 41, 41); 
+    border-radius: 6px;
+   
+  }

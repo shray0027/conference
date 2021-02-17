@@ -58,7 +58,11 @@ passport.serializeUser(function(user, done) {
 //REST API'S
 
 app.get("/",(req,res)=>{
+  if(req.isAuthenticated()){
+    res.redirect("/options");
+  } else {
     res.render("index");
+  }
 })
 app.get("/qoutes",(req,res)=>{
   qoutes(callback=>{
@@ -67,7 +71,11 @@ app.get("/qoutes",(req,res)=>{
   });
 })
 app.get("/login",(req,res)=>{
+  if(req.isAuthenticated()){
+    res.redirect("/options");
+  } else {
     res.render("login");
+  }
 });
 app.post("/register",(req,res)=>{
     let name = req.body.username;
@@ -80,7 +88,7 @@ app.post("/register",(req,res)=>{
                 console.log(err);
             }
             passport.authenticate('local')(req,res,()=>{
-                res.render("options");
+                res.redirect("/options");
             })
         }
 
@@ -98,17 +106,36 @@ app.post("/login", (req, res) => {
         res.redirect("/login");
       } else {
         passport.authenticate('local')(req,res,()=>{
-          res.redirect("options/"+userN._id);
+          res.redirect("/options");
       })
       }
     });
   });
-
+app.get("/logout",(req,res)=>{
+  req.logout();
+  res.redirect("/");
+})
 app.get("/options",(req,res)=>{
-   res.render("options");
+  if(req.isAuthenticated()){
+    res.render("options");
+  } else {
+    res.redirect("/login");
+  }
+  
 })
 app.get("/join",(req,res)=>{
-  res.render("join");
+  if(req.isAuthenticated()){
+    res.render("join");
+  } else {
+    res.redirect("/login");
+  }
+})
+app.get("/create",(req,res)=>{
+  if(req.isAuthenticated()){
+    res.render("create");
+  } else {
+    res.redirect("/login");
+  }
 })
 let port = process.env.PORT || 3000;
 app.listen(port,()=>{

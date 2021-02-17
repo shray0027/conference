@@ -37,22 +37,25 @@ function toggleMenu() {
 let showLogin = false;
 
 function toggle() {
-  console.log("hello");
   if (!showLogin) {
     register.style.display = "block";
     login.style.display = "none";
     showLogin = true;
     optBtn.innerHTML = "Sign in";
     heading.textContent = "Sign up...";
+    setTimeout(()=>{
+      alert("password should contain:\n 1. minimum 8 characters \n 2. A small case letter (eg a ,b) \n 3. An upper case letter (eg A ,B) \n 4. A number (eg 1,2) \n 5. A special symbol (eg @$#)");
+    },500);
+   
   } else {
     register.style.display = "none";
     login.style.display = "block";
     showLogin = false;
     optBtn.innerHTML = "Sign up";
     heading.textContent = "Login...";
+    
   }
 }
 function remove(){
-  console.log("hello");
         add.style.display="none";
 }
