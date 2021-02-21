@@ -137,6 +137,9 @@ app.get("/create",(req,res)=>{
     res.redirect("/login");
   }
 })
+app.get("/conference",(req,res)=>{
+  res.render("conference")
+})
 let port = process.env.PORT || 3000;
 app.listen(port,()=>{
     console.log("server is deployed on port 3000");

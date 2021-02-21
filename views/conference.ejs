@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/conference.css">
+        <script
+        src="https://kit.fontawesome.com/89e8994d62.js"
+        crossorigin="anonymous"
+      ></script>
+    </head>
+    <body>
+        <div class="main__wrapper">
+            <div class="main__screen">
+                <div class="toolbar">
+                    <div class="toolbar-toggle-btn">
+                        <div class="lines"></div>
+                        <div class="lines"></div>
+                        <div class="lines"></div>
+                    </div>
+                    <div class="toolbar-tools">
+                        <div class="participants_on on" onclick="showParticipants()">
+                            <i class="fas fa-user"></i>
+                            <div class="participants_no">
+                                48
+                            </div>
+                        </div>
+                        <button class="info_on on" onclick="showInfo()">
+                            <i class="fas fa-info"></i>
+                        </button>
+                        <button class="mic_on on" onclick="closeMic()">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        <button class="call_end">
+                            <i class="fas fa-phone-slash"></i>
+                        </button>
+                        <button class="video_on on" onclick="closeVideo()">
+                            <i class="fas fa-video"></i>
+                        </button>
+                        <button class="chat_on on" onclick="closeMsg()">
+                            <i class="fas fa-comments"></i>
+                        </button>
+                        <button class="settings_on on" onclick="showSettings()">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="main__chat">
+
+            </div>
+        </div>
+        <div class="construction">
+            <h1>building under way</h1>
+        </div>
+        <script src="/js/toolbar.js"></script>
+    </body>
+</html>
