@@ -10,6 +10,11 @@
     <body>
         <div class="main__wrapper">
             <div class="main__screen">
+                <div class="settings">
+                    <div class="center_div">
+                        div.left
+                    </div>
+                </div>
                 <div class="toolbar">
                     <div class="toolbar-toggle-btn">
                         <div class="lines"></div>
@@ -53,7 +58,7 @@
                 </div>
                 <div class="main__chat_entry">
                     <div class="main__chat_entry_outer">
-                        <textarea class="chat_msg"></textarea>
+                        <textarea    class="chatMsg" data-rows="1" tabindex="0" aria-label="Send a message to everyone" maxlength="500" name="chatTextInput" data-max-rows="5" data-initial-value style="height: 24px;"></textarea>
                     </div>
                     <button class="main__chat_entry_send">
 
@@ -65,5 +70,6 @@
             <h1>building under way</h1>
         </div>
         <script src="/js/toolbar.js"></script>
+        <script src="/js/sidebar.js"></script>
     </body>
 </html>

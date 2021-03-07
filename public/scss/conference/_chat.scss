@@ -1,0 +1,28 @@
+@mixin chat{
+      .main__chat{
+        height: 100vh;
+        display: none;
+        flex-direction: column;
+        &_items{
+            width: 100%;
+            height: 80px;
+        }
+        &_msg{
+            width: 100%;
+            flex-grow: 1;
+        }
+        &_entry{
+            width:100%;
+            height: 200px;
+            &_outer{
+                .chatMsg{
+                    background:none ;
+                  &:hover{
+                      @include transition-ease;
+                      border-bottom: 1.5px solid ;
+                  }   
+                }
+            }
+        }
+    }
+}
