@@ -62,6 +62,7 @@ body {
   }
   .container2 {
     display: flex;
+    z-index: -1;
     flex-direction: column;
     background-color: #fcf9f9;
     height: 100%;
@@ -76,6 +77,7 @@ body {
   .one {
     margin-left: 10px;
     background: #ff6059;
+
   }
   .two {
     background: #ffbe2e;
@@ -111,7 +113,7 @@ body {
     border-radius: 2px;
     margin: auto;
     display: flex;
-    
+    z-index: -1;
   }
   .div > p{
       margin-left:5px;
@@ -123,6 +125,7 @@ body {
     font-family: Lato;
     font-size: 0.8rem;
     font-weight: 300;
+    z-index: -1;
 }
 .div> span{
       display: flex;
@@ -133,7 +136,7 @@ body {
   }
 
   .A{
-    border: 1.5px solid #ff6059;
+    border: 1.5px solid #ffb834;
   }
  .l{
     border: 1.5px solid #14b128;
@@ -142,7 +145,7 @@ body {
     color: #14b128;
 }
 .fa-lock-open{
-    color:#ffbe2e;
+    color:#ff6059;
 }
 .inner-container1{
     width: 70px;
@@ -164,8 +167,8 @@ body {
     border: 1.5px solid #2ea043;
   }
   .button2 {
-    background-color: #ff6059;
-    border: 1.5px solid #b4140d;
+    background-color: #ffbe2e;
+    border: 1.5px solid #ffb834;
   }
   @media (max-width:768px){
       .container{
