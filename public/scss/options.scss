@@ -13,7 +13,6 @@
 @import "./nav2";
 body {
     background: getBlue(backgroundBlue);
-    height: 100%;
     font-family: 'Lato',Helvetica, sans-serif;
   }
   a {
@@ -62,8 +61,74 @@ body {
             }
         }
      }
+     &_options{
+         margin-top: 4rem;
+         display: flex;
+         height: 600px;
+         &_btn{
+            width: 50%;
+            height: 80%;
+            display: flex;
+            flex-direction: column;
+            &_1,&_2{
+                height:200px;
+                width: 100%;
+            }
+            &_1,&_2{
+                display: flex;
+            }
+            &_2{
+                margin-top: 3rem;
+            }
+            .btn{
+                margin:auto 0;
+                width: 150px;
+                height:150px;  
+                border-radius: 20px;
+                display: flex;
+                background: getBlue(btnBack);
+                & > a{
+                    margin: auto;
+                }
+            }
+            .btn2{
+                margin-left: 100px;
+            }
+            .btn3{
+                position: relative;
+            }
+            .tiltedImg{
+                position: absolute;
+                left: -20px;
+                top:-20px;
+            }
+            .btn-a{
+                width: 110px;
+                height:110px; 
+                border-radius: 20px;
+                background: getBlue(btnFront);
+                display: flex;
+                & > p {
+                    margin: auto;
+                }
+            }
+         }
+         &_log{
+            width: 50%;
+         }
+     }
  }
-
+@media(max-width:1000px){
+.main_container_options{
+    &_btn{
+       width: 410px;
+       margin: auto;
+    }
+    &_log{
+       display: none;
+    }
+}
+}
 @media(max-width:480px){
     .main_container{
         width:90%;
@@ -75,7 +140,7 @@ body {
                        font-size: 1.5rem;
                    }
                    .time-span{
-                       margin-top: 1rem;
+                       margin-top: 0.5rem;
                        font-size: 0.8rem;
                    }
                }
@@ -91,5 +156,38 @@ body {
                 }
            }
         }
+        &_options{
+            margin-top: 1.5rem;
+            display: flex;
+            height: 400px;
+            &_btn{
+               width: 100%;
+               height: 80%;
+               font-size: 0.9rem;
+               &_2{
+                   margin-top: 1rem;
+               }
+               .btn{
+                   width: 120px;
+                   height:120px;  
+               }
+               .btn2{
+                   margin-left: 50px;
+               }
+               .tiltedImg{
+                   left: -10px;
+                   top:-10px;
+                   width: 80px;
+                   height: 80px;
+               }
+               .btn-a{
+                   width: 90px;
+                   height:90px; 
+               }
+            }
+            &_log{
+
+            }
     }
+}
 }
