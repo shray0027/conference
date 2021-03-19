@@ -1,78 +1,80 @@
 @include media-md {
   .menu-logo {
-    &__title{
+    &__title {
       color: white;
+    }
   }
-}
 
-.menu-btn {
-  visibility: hidden;
-}
+  .menu-btn {
+    visibility: hidden;
+  }
 
-.nav {
-  visibility: visible;
-  .menu-nav {
-        display: block;
-  transform: translateY(0);
-  height: 100%;
-  text-align: right;
-  &__item {
-          display: inline;
-  padding-right: 1.5rem;
-}
+  .nav {
+    visibility: visible;
+    .menu-nav {
+      display: block;
+      transform: translateY(0);
+      height: 100%;
+      text-align: right;
+      &__item {
+        display: inline;
+        padding-right: 1.5rem;
+      }
 
-.dis {
-  display: none;
-}
-        &__link {
-  font-size: 0.8rem;
-}
+      .dis {
+        display: none;
+      }
+      &__link {
+        font-size: 0.8rem;
       }
     }
- 
+  }
 }
 
 @include media-sm {
   .main {
-    &_wrap{
+    &_wrap {
       display: inline-block;
-    &__pos{
+      height: 100%;
+      width: 100%;
+      border: none;
+      &__pos {
         width: 100%;
-    height: 10%;
-    &__description{
-            margin-top: 10px;
-    display: inline-block;
-    text-align: center;
-    & > h1{
-            
-              font-size: 2rem;
-    margin: 0;
-    color: getBlue(nav);
-  }
-}
+        height: 10%;
+        &__description {
+          margin-top: 10px;
+          display: inline-block;
+          text-align: center;
+          & > h1 {
+            font-size: 2rem;
+            margin: 0;
+            color: getBlue(nav);
+          }
+        }
         &__qoute {
-  display: none;
-}
-    }
-    &__form {
-  height: 90%;
-  width: 100%;
-  margin-top: 10px;
-}
+          display: none;
+        }
+      }
+      &__form {
+        width: 95%;
+        margin: 2rem auto;
+        .label{
+          font-size: 1.2rem;
+        }
+      }
     }
   }
 
-.r {
-  display: none;
-}
-
-.dis {
-  display: inline;
-}
-.option_full{
-  #{&}_center{
-    width:70%; 
-
+  .r {
+    display: none;
   }
-}
+
+  .dis {
+    display: inline;
+  }
+  .option_full {
+    #{&}_center {
+      width: 70%;
+    }
+  }
 }

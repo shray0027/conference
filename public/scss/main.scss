@@ -14,9 +14,6 @@
 
 @import "./nav2";
 
-@import "./options";
-
-@import "./add";
 
 @import "./flashMsg";
 
@@ -58,7 +55,6 @@ header {
 }
 
 .inform {
-  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -69,13 +65,13 @@ header {
 }
 
 .input_feilds {
-  flex-grow: 1;
   width: 100%;
   display: flex;
   flex-direction: column;
   color: getBlue(nav);
   font-size: 1.5rem;
   font-weight: 500;
+  height:300px;
 }
 
 input {
