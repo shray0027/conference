@@ -12,7 +12,7 @@
 
 @import "./nav2";
 body {
-    background: white;
+    background: getBlue(backgroundBlue);
     font-family: 'Lato',Helvetica, sans-serif;
   }
   a {
@@ -28,10 +28,10 @@ body {
      width:80%;
      margin: auto;
      margin-top: 5rem;
-     color: black;
+     color: white;
      .childNavbar{
         width: 100%;
-        border-bottom: 1.5px solid black;
+        border-bottom: 1.5px solid white;
         display: flex;
         .dateTime{
             margin-bottom: 10px;
