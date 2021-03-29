@@ -16,7 +16,7 @@
         .end,.video,.mic{
             margin: auto;
         }
-        .end,.video,.mic,.chat{
+        .end,.video,.mic,.chat,.info{
             color:white;
             display: flex;
             font-size: 1.5rem;
@@ -31,22 +31,13 @@
         .end:hover{
             background: rgb(245, 49, 49);
         }
-        .video:hover,.mic:hover,.chat:hover{
+        .video:hover,.mic:hover,.chat:hover,.info:hover{
             background: rgb(94, 94, 94);
         }
-        .chat{
+        .chat,.info{
             margin:auto 20px ;
         }
-        .chat>i{
+        i{
             margin: auto;
-        }
-        .end>i{
-            margin: auto;
-        }
-        .mic >i {
-            margin: auto;
-        }
-        .video>i{
-            margin:auto ;
         }
     }
