@@ -1,8 +1,13 @@
 const chat = document.querySelector(".chat");
+const chatclose = document.querySelector(".crossBtn");
 const mic = document.querySelector(".mic");
 const video = document.querySelector(".video");
 const mainRight = document.querySelector(".main_right").style;
 let toggleChat=true;
+chatclose.addEventListener("click",()=>{
+    mainRight.display="none";
+    toggleChat=true;
+})
 chat.addEventListener("click",()=>{
     if(toggleChat){
         mainRight.display="block";

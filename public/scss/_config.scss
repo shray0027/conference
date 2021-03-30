@@ -1,4 +1,13 @@
 $primary-color : #E9F8FF;
+$dark-theme:(
+    "text":white,
+    "hover":rgb(94,94,94),
+    "btnBack":rgb(49,49,49),
+    "chatBack":rgb(34,34,34),
+    "shadow":rgb(28,28,28),
+    "videoBack":rgb(27,27,27),
+    "toolbar":#090a0c
+);
 $shades-blue:(
     "front":#B7EBFE,
     "border":#CEF1FD,
@@ -20,6 +29,9 @@ $font-set:(
 );
 @function getBlue($blue-shade){
     @return map-get($shades-blue,$blue-shade);
+}
+@function dark($dark-color){
+    @return map-get($dark-theme,$dark-color);
 }
 @function logoColor($font-color){
     @return map-get($logo-set-color,$font-color);
