@@ -148,6 +148,9 @@ app.get("/room",(req,res)=>{
 app.get("/chat",(req,res)=>{
   res.render("conference")
 })
+app.get("/end",(req,res)=>{
+  res.render("end")
+})
 let port = process.env.PORT || 3000;
 server.listen(port,()=>{
     console.log("server is deployed on port 3000");
