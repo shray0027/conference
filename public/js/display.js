@@ -55,3 +55,4 @@ function toggle() {
 function remove(){
         add.style.display="none";
 }
+localStorage.clear();

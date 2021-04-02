@@ -149,7 +149,11 @@ app.get("/chat",(req,res)=>{
   res.render("conference")
 })
 app.get("/end",(req,res)=>{
-  res.render("end")
+  if(req.isAuthenticated()){
+    res.render("end");
+  } else {
+    res.redirect("/login");
+  }
 })
 let port = process.env.PORT || 3000;
 server.listen(port,()=>{
