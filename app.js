@@ -1,4 +1,5 @@
 require('dotenv').config();
+const http = require("http");
 const express=require("express");
 const bodyParser=require("body-parser");
 const ejs=require("ejs");
@@ -10,6 +11,7 @@ const findOrCreate = require("mongoose-findorcreate");
 const search = require(__dirname+"/utils/binarySearch.js");
 const qoutes = require(__dirname+"/utils/qoutes.js");
 const app=express();
+const server =  http.createServer(app);
 //MIDDLEWARES 
 
 app.set("view engine","ejs");
@@ -140,7 +142,13 @@ app.get("/create",(req,res)=>{
 app.get("/conference",(req,res)=>{
   res.render("conference")
 })
+app.get("/room",(req,res)=>{
+  res.render("room")
+})
+app.get("/chat",(req,res)=>{
+  res.render("conference")
+})
 let port = process.env.PORT || 3000;
-app.listen(port,()=>{
+server.listen(port,()=>{
     console.log("server is deployed on port 3000");
 })

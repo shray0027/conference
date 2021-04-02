@@ -1,48 +1,189 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-@import "./resets";
 @import "./config";
-@import "./nav";
-@import "./nav2";
-@import "./outside";
-@import "./responsive";
-@import "./animation";
-
-
-body {
-    background: getBlue(backgroundBlue);
-    background-image: url("/img/backgroundBlue.svg");
-    background-repeat: repeat-y;
-    background-size: 100vw 100vh;
-    height: 100vh;
-    overflow-x: hidden;
-    font-family: 'Lato',Helvetica, sans-serif;
-  }
-  a {
-    color: white;
-    text-decoration: none;
-  }
-  header {
-    z-index: 2;
+@import "./resets";
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body{
+  background: #333844;
+  color: #333;
+  font-family: "Lato",Helvetica, sans-serif;
+  line-height: 1.4;
+  overflow-y: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.nav{
+  width: 100%;
+  height: 80px;
+  display: flex;
+}
+.left-item{
+  margin: auto 20px;
+  z-index: 10;
+}
+button{
+  cursor: pointer;
+}
+.left-item > button {
+  background: dark(hover);
+  color: dark(text);
+  font-size: 1.5rem;
+  height: 50px;
+  width: 50px;
+  border-radius: 100px;
+  border: none;
+}
+.left-item > button:hover{
+  background: rgba(255,255,255,0.5);
+}
+.right-item{
+  margin:auto 30px auto auto;
+}
+.right-item > button{
+  width:100px;
+  height: 40px;
+  background: none;
+  border-radius: 5px;
+  border: 2px solid white;
+  color: dark(text);
+  font-size: 1.2rem;
+}
+.right-item >button:hover{
+  border-color: #7C5CBF;
+  background: #7C5CBF;
+  transition: 0.5s ease-in-out;
+}
+.ripple-background{
+    position: relative;
     width: 100%;
-    height: 58px;
+    height: 100%;
+}
+.main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.right-div{
+    width: 100%;
+    height: 100%;
+}
+.right-div{
+    display: flex;
+}
+.form-div{
+  z-index: 10;
+    margin: auto;
+    width: 250px;
+    padding: 24px;
+    box-shadow: 0 0 17px 1px #1d1f26;
+    background: #f7f7fa;
+    border-radius: 10px;
+}
+.form-box{
+    display: flex;
+    flex-direction: column;
   }
-  .nav{
-      box-shadow: none !important;
-      -webkit-box-shadow: none !important;
-  -moz-box-shadow: none !important;
+  .form-box >h1{
+      margin-bottom: 16px;
   }
-  ::-webkit-scrollbar {
-    width: 8px;
+  .form-box > label{
+     font-size:14px;
+     color: #777;
+     margin-bottom: 8px;
+  }
+  .form-box > input{
+      border: 1px solid #eee;
+      padding: 12px;
+      font-size: 14px;
+      outline: none;
+      margin-bottom: 16px;
+  }
+  .form-box > button{
+      cursor: pointer;
+      padding: 12px;
+      background: #7C5CBF;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      transition: .3s ease;
+  }
+.circle{
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+  animation: ripple 15s infinite;
+  box-shadow: 0px 0px 1px 0px #4d5463;
+}
+
+.small{
+  width: 200px;
+  height: 200px;
+  left: -100px;
+  bottom: -100px;
+}
+
+.medium{
+  width: 400px;
+  height: 400px;
+  left: -200px;
+  bottom: -200px;
+}
+
+.large{
+  width: 600px;
+  height: 600px;
+  left: -300px;
+  bottom: -300px;
+}
+
+.xlarge{
+  width: 800px;
+  height: 800px;
+  left: -400px;
+  bottom: -400px;
+}
+
+.xxlarge{
+  width: 1000px;
+  height: 1000px;
+  left: -500px;
+  bottom: -500px;
+}
+
+.shade1{
+  opacity: 0.2;
+}
+.shade2{
+  opacity: 0.5;
+}
+
+.shade3{
+  opacity: 0.7;
+}
+
+.shade4{
+  opacity: 0.8;
+}
+
+.shade5{
+  opacity: 0.9;
+}
+
+@keyframes ripple{
+  0%{
+    transform: scale(0.8);
   }
   
-  ::-webkit-scrollbar-track {
-    background: none;
-    margin-right: 2px;
+  50%{
+    transform: scale(1.2);
   }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background:rgb(41, 41, 41); 
-    border-radius: 6px;
-   
+  
+  100%{
+    transform: scale(0.8);
   }
+}

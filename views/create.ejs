@@ -1,45 +1,48 @@
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      src="https://kit.fontawesome.com/89e8994d62.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="/css/create.css" />
-  </head>
-  <body>
-<%-include("partials/nav2");-%>
-<div>
-    <div class="body">
-      <!-- mid -->
-      <div class="container">
-        <!-- mac buttons -->
-        <div class="container1">
-            <div class="inner-container1">
-              <div class="circle one"></div>
-              <div class="circle two"></div>
-              <div class="circle three"></div>
+<%- include("partials/header"); -%> 
+        <link rel="stylesheet" href="/css/join.css">
+        <link rel="shortcut icon" href="/img/logo.png" type="image/x-icon">
+        <title>CREATE - a meeting </title>
+    </head>
+    <body>
+        <div class="nav">
+            <div class="left-item">
+                <button class="back-button"  onclick="window.location.href = '/options'">
+                    <i class="fas fa-long-arrow-alt-left"></i>
+                </button>
             </div>
-
+            <div class="right-item">
+                <button class="logout-btn" onclick="window.location.href = '/logout'">
+                    logout
+                </button>
+            </div>
         </div>
-        <!-- content -->
-        <div class="container2">
-          <div class="img">
-            <img class="secure" src="/img/pri.png" alt="privacy image" />
-          </div>
-          <div class="inp">
-              <div class="div l"><p>Restricted entry </p><span><i class="fas fa-lock "></i></span></div>
+        <div class='ripple-background'>
 
-            <button class="button button1">create</button>
+            <div class="main">
+                <div class="left-div"></div>
+                <div class="right-div">
+                    <div class="form-div">
+                        <h1>CREATE</h1>
+                        <form action="/conference" class="form-box">
+                             <label for="">
+                                 Display name
+                             </label>
+                             <input type="text" class="input-box" name="user" placeholder="display name">
+                             <label for="">
+                                 Room name
+                             </label>
+                             <input type="text" class="input-box" name="conference" placeholder="room name">
+                             <button>Enter</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class='circle xxlarge shade1'></div>
+            <div class='circle xlarge shade2'></div>
+            <div class='circle large shade3'></div>
+            <div class='circle mediun shade4'></div>
+            <div class='circle small shade5'></div>
           </div>
-          <div class="inp">
-              <div class="div A"><p>Anyone can join </p><span><i class="fas fa-lock-open "></i></span></div>
-            <button class="button button2">create</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script src="/js/nav.js"></script>
-</body>
+          
+    </body>
 </html>
