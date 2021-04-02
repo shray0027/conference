@@ -54,8 +54,8 @@ button{
   font-size: 1.2rem;
 }
 .right-item >button:hover{
-  border-color: #7C5CBF;
-  background: #7C5CBF;
+  border-color: #315af0;
+  background: #315af0;
   transition: 0.5s ease-in-out;
 }
 .ripple-background{
@@ -88,8 +88,9 @@ button{
     display: flex;
     flex-direction: column;
   }
-  .form-box >h1{
+  .form-div >h1{
       margin-bottom: 16px;
+      text-align: center;
   }
   .form-box > label{
      font-size:14px;
@@ -106,11 +107,15 @@ button{
   .form-box > button{
       cursor: pointer;
       padding: 12px;
-      background: #7C5CBF;
+      background: #4863c4;
       border: none;
       color: #fff;
       font-size: 16px;
       transition: .3s ease;
+      border-radius: 5px;
+  }
+  .form-box > button:hover{
+    background:#315af0;
   }
 .circle{
   position: absolute;
@@ -178,12 +183,51 @@ button{
   0%{
     transform: scale(0.8);
   }
-  
+
   50%{
     transform: scale(1.2);
   }
   
   100%{
     transform: scale(0.8);
+  }
+}
+@media(max-width : 500px){
+  body{
+    overflow:hidden ;
+  }
+  .small{
+    width: 100px;
+    height: 100px;
+    left: -50px;
+    bottom: -50px;
+  }
+  
+  .medium{
+    width: 200px;
+    height: 200px;
+    left: -100px;
+    bottom: -100px;
+  }
+  
+  .large{
+    width: 300px;
+    height: 300px;
+    left: -150px;
+    bottom: -150px;
+  }
+  
+  .xlarge{
+    width: 400px;
+    height: 400px;
+    left: -200px;
+    bottom: -200px;
+  }
+  
+  .xxlarge{
+    width: 500px;
+    height: 500px;
+    left: -250px;
+    bottom: -250px;
   }
 }
