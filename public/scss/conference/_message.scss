@@ -1,0 +1,16 @@
+@mixin message{
+    .message{
+        width:90%;
+        border-radius: 20px;
+        margin: 10px;
+        background: #252e31;
+        .message-username{
+            
+            height: 30px;
+            font-size: 8px;
+            width: 100%;
+            font-weight: 500;
+            color:magenta;
+        }
+    }
+}

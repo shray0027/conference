@@ -10,8 +10,12 @@ const passportLocalMongoose=require("passport-local-mongoose");
 const findOrCreate = require("mongoose-findorcreate");
 const search = require(__dirname+"/utils/binarySearch.js");
 const qoutes = require(__dirname+"/utils/qoutes.js");
+const {generateMessage} = require(__dirname+"/utils/message.js");
+const {addUser,removeUser,getUser,getUsersInRoom}= require(__dirname+"/utils/users.js");
+const socketio = require("socket.io");
 const app=express();
 const server =  http.createServer(app);
+const io = socketio(server);
 //MIDDLEWARES 
 
 app.set("view engine","ejs");
@@ -128,9 +132,39 @@ app.get("/options",(req,res)=>{
 app.get("/join",(req,res)=>{
   if(req.isAuthenticated()){
     res.render("join");
+
+    io.on('connection',(socket)=>{
+    console.log("websocket initialized");
+    
+    socket.on('join',(options,callback)=>{
+      const {error,user} = addUser({id:socket.id,...options});
+      if(error){
+          return callback(error);
+      }
+      socket.join(options.room);
+      socket.emit('message',generateMessage("chat bot","yellow","Welcome!"));
+      socket.broadcast.to(options.room).emit('connected',generateMessage(options.username,"yellow"," joined!! at "));
+      callback()
+    
+    })
+    socket.on("message",(message,callback)=>{
+      const user = getUser(socket.id);
+      io.to(user.room).emit('message',generateMessage(user.username,user.avatorColor,message));
+      callback();
+    })
+    socket.on('disconnect',()=>{
+      const user = removeUser(socket.id);
+      if(user){
+          io.to(user.room).emit('disconnected',generateMessage(user.username,"yellow", " disconnected at "));
+      }
+    })
+    })
   } else {
     res.redirect("/login");
   }
+
+   
+
 })
 app.get("/create",(req,res)=>{
   if(req.isAuthenticated()){
@@ -142,12 +176,7 @@ app.get("/create",(req,res)=>{
 app.get("/conference",(req,res)=>{
   res.render("conference")
 })
-app.get("/room",(req,res)=>{
-  res.render("room")
-})
-app.get("/chat",(req,res)=>{
-  res.render("conference")
-})
+
 app.get("/end",(req,res)=>{
   if(req.isAuthenticated()){
     res.render("end");
@@ -155,7 +184,18 @@ app.get("/end",(req,res)=>{
     res.redirect("/login");
   }
 })
-let port = process.env.PORT || 3000;
+
+
+
+
+
+
+
+
+
+
+
+let port = process.env.PORT || 3001;
 server.listen(port,()=>{
-    console.log("server is deployed on port 3000");
+    console.log(`server is deployed on port ${port}`);
 })

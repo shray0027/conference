@@ -46,24 +46,55 @@
 					</div>
 				</div>
 				<div class="main_right_chat_msg">
-					<div>
-				
-					</div>
-				
+					<div class="messages-div">
+
+						</div>
 				</div>
 				<div class="main_right_chat_usr"></div>
 				<div class="main_right_chat_input">
-					<textarea type="text" id="input-chat" placeholder="Type your message"></textarea>
-					<div class="send-div"> <i class="send fas fa-paper-plane"></i>
-					</div>
+					<form class="messageForm">
+						<input type="text" id="input-chat" placeholder="Type your message">
+						<button class="send-div"> <i class="send fas fa-paper-plane"></i></button>
+					</form>		
 				</div>
 			</div>
 		</div>
 	</div>
+	<script class="messageTemplate" type="text/html">
+		<div class="message">
+							<div class="message-username" >
+								<p >{{username}}</p>
+							</div>
+							<div class="message-content">
+								<p>
+									{{message}}
+								</p>
+							</div>
+							<div class="message-time">
+								<p>
+									{{createdAt}}
+								</p>
+							</div>
+        </div>
+	</script>
+	<script class="joinTemplate" type="text/html">
+		<div class="joinDetail">
+			<p><span>{{username}}</span> {{message}} {{createdAt}}</p>
+		</div>
+	</script>
+	<script class="disconnectTemplate" type="text/html">
+		<div class="disconnectDetail">
+			<p><span>{{username}}</span> {{message}} {{createdAt}}</p>
+		</div>
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/js/cnfJS/conference.js"></script>
 	<script src="/js/cnfJS/userDetails.js"></script>
 	<script src="/js/cnfJS/sidebar.js"></script>
     <script src="/js/cnfJS/toolbar.js"></script>
-	<script src="/js/cnfJS/desktopdisplay.js"></script>
 </body>
 
 </html>
