@@ -1,7 +1,6 @@
-const generateMessage = (username,avatarColor,text)=>{
+const generateMessage = (username,text)=>{
     return {
         username,
-        avatarColor,
         text,
         timestamp:new Date().getTime()
     }

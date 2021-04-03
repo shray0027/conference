@@ -11,8 +11,7 @@ const disconnectTemplate=document.querySelector(".disconnectTemplate").innerHTML
 const joinTemplate=document.querySelector(".joinTemplate").innerHTML;
 const {username , room}=Qs.parse(location.search,{ignoreQueryPrefix:true});
 const socket= io();
-const avatorColor=localStorage.getItem("avatorColor");
-socket.emit('join',{username,avatorColor:avatorColor,room},(error)=>{
+socket.emit('join',{username,room},(error)=>{
     if(error){
         alert(error);
         location.href("/");
@@ -23,18 +22,16 @@ socket.emit('join',{username,avatorColor:avatorColor,room},(error)=>{
 socket.on('message',(message)=>{
     const html = Mustache.render(messageTemplate,{
         username:message.username,
-        avatorColor:message.avatarColor,
         message:message.text,
         createdAt:moment(message.createdAt).format('h:mm a')
     });
     messages.insertAdjacentHTML('beforeend',html);
-    //console.log(message);
-})
-
+    
+});
+console.log(1);
 socket.on('connected',(message)=>{
     const html = Mustache.render(joinTemplate,{
         username:message.username,
-        avatorColor:message.avatarColor,
         message:message.text,
         createdAt:moment(message.createdAt).format('h:mm a')
     });
@@ -44,7 +41,6 @@ socket.on('connected',(message)=>{
 socket.on('disconnected',(message)=>{
     const html = Mustache.render(disconnectTemplate,{
         username:message.username,
-        avatorColor:message.avatarColor,
         message:message.text,
         createdAt:moment(message.createdAt).format('h:mm a')
     });
@@ -65,9 +61,5 @@ messageForm.addEventListener("submit",(e)=>{
         if(error){
            return  alert(error);
         }
-
-        // make a message delivered element
-        console.log("message delivered");
     })
-    console.log(message);
 });

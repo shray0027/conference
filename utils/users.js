@@ -1,5 +1,5 @@
 conferenceUsers=[];
-const addUser=({id,username,avatarColor,room}) =>{
+const addUser=({id,username,room}) =>{
         username=username.trim().toLowerCase();
         room = room.trim().toLowerCase();
         
@@ -21,7 +21,7 @@ const addUser=({id,username,avatarColor,room}) =>{
                 error:"Username is in use!"
             }
         }
-        const user = {id,username,avatarColor,room}
+        const user = {id,username,room}
         conferenceUsers.push(user)
         return {user}
 }

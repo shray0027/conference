@@ -132,40 +132,39 @@ app.get("/options",(req,res)=>{
 app.get("/join",(req,res)=>{
   if(req.isAuthenticated()){
     res.render("join");
-
-    io.on('connection',(socket)=>{
-    console.log("websocket initialized");
-    
-    socket.on('join',(options,callback)=>{
-      const {error,user} = addUser({id:socket.id,...options});
-      if(error){
-          return callback(error);
-      }
-      socket.join(options.room);
-      socket.emit('message',generateMessage("chat bot","yellow","Welcome!"));
-      socket.broadcast.to(options.room).emit('connected',generateMessage(options.username,"yellow"," joined!! at "));
-      callback()
-    
-    })
-    socket.on("message",(message,callback)=>{
-      const user = getUser(socket.id);
-      io.to(user.room).emit('message',generateMessage(user.username,user.avatorColor,message));
-      callback();
-    })
-    socket.on('disconnect',()=>{
-      const user = removeUser(socket.id);
-      if(user){
-          io.to(user.room).emit('disconnected',generateMessage(user.username,"yellow", " disconnected at "));
-      }
-    })
-    })
   } else {
     res.redirect("/login");
   }
-
-   
+  
 
 })
+
+io.on('connection',(socket)=>{
+  console.log("websocket initialized");
+  
+  socket.on('join',(options,callback)=>{
+    const {error,user} = addUser({id:socket.id,...options});
+    if(error){
+        return callback(error);
+    }
+    socket.join(options.room);
+    socket.emit('message',generateMessage("chat bot","Welcome!"));
+    socket.broadcast.to(options.room).emit('connected',generateMessage(options.username," joined!! at "));
+    callback();
+  
+  })
+  socket.on("message",(message,callback)=>{
+    const user = getUser(socket.id);
+    io.to(user.room).emit('message',generateMessage(user.username,message));
+    callback();
+  })
+  socket.on('disconnect',()=>{
+    const user = removeUser(socket.id);
+    if(user){
+        io.to(user.room).emit('disconnected',generateMessage(user.username, " disconnected at "));
+    }
+  })
+  })
 app.get("/create",(req,res)=>{
   if(req.isAuthenticated()){
     res.render("create");
@@ -174,7 +173,12 @@ app.get("/create",(req,res)=>{
   }
 })
 app.get("/conference",(req,res)=>{
-  res.render("conference")
+  if(req.isAuthenticated()){
+    res.render("conference")
+  } else {
+    res.redirect("/login");
+  }
+
 })
 
 app.get("/end",(req,res)=>{
@@ -195,7 +199,7 @@ app.get("/end",(req,res)=>{
 
 
 
-let port = process.env.PORT || 3001;
+let port = process.env.PORT || 3000;
 server.listen(port,()=>{
     console.log(`server is deployed on port ${port}`);
 })
