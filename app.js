@@ -140,16 +140,18 @@ app.get("/join",(req,res)=>{
 })
 
 io.on('connection',(socket)=>{
-  console.log("websocket initialized");
   
   socket.on('join',(options,callback)=>{
     const {error,user} = addUser({id:socket.id,...options});
     if(error){
         return callback(error);
     }
-    socket.join(options.room);
+    socket.join(user.room);
     socket.emit('message',generateMessage("chat bot","Welcome!"));
-    socket.broadcast.to(options.room).emit('connected',generateMessage(options.username," joined!! at "));
+    socket.broadcast.to(user.room).emit('connected',generateMessage(user.username," joined!! at "));
+    io.to(user.room).emit('roomData',{
+      users:getUsersInRoom(user.room)
+    })
     callback();
   
   })
@@ -162,6 +164,9 @@ io.on('connection',(socket)=>{
     const user = removeUser(socket.id);
     if(user){
         io.to(user.room).emit('disconnected',generateMessage(user.username, " disconnected at "));
+        io.to(user.room).emit('roomData',{
+          users:getUsersInRoom(user.room)
+        })
     }
   })
   })
