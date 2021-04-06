@@ -33,31 +33,24 @@
 
 @include media-sm {
   .main {
+    height: 85vh;
     &_wrap {
       display: inline-block;
       height: 100%;
       width: 100%;
       border: none;
       &__pos {
-        width: 100%;
-        height: 10%;
-        &__description {
-          margin-top: 10px;
-          display: inline-block;
-          text-align: center;
-          & > h1 {
-            font-size: 2rem;
-            margin: 0;
-            color: getBlue(nav);
-          }
-        }
-        &__qoute {
-          display: none;
-        }
+        display: none;
       }
       &__form {
-        width: 95%;
-        margin: 2rem auto;
+        width: 100%;
+        margin: auto;
+        &_h{
+          width: 100%;
+          border-radius:0;
+          box-shadow: none;
+          background: getBlue(backgroundBlue);
+        }
         .label{
           font-size: 1.2rem;
         }

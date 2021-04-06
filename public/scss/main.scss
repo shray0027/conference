@@ -18,7 +18,7 @@
 @import "./flashMsg";
 
 body {
-  background: getBlue(back);
+  background:  getBlue(backgroundBlue);
   height: 100vh;
   font-family: 'Lato',Helvetica, sans-serif;
 }
@@ -35,9 +35,9 @@ header {
 }
 
 .blueBtn {
-  background: white;
-  color: getBlue(nav);
-  border: 1.5px solid getBlue(nav);
+  background: none;
+  color:dark(text);
+  border: 1.5px solid dark(text);
   border-radius: 10px;
   font-size: 1rem;
   margin: auto;
@@ -70,17 +70,24 @@ header {
   flex-direction: column;
   color: getBlue(nav);
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: 400;
   height:300px;
+  color: white;
 }
 
 input {
   border: none;
-  background: white;
-  border-bottom: 2px solid getBlue(nav);
+  background: none;
+  color: white;
+  margin-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1.5px solid white;
   width: 100%;
   font-size: 1rem;
+  font-weight: 300;
 }
+
 
 .block {
   margin: 1.5rem auto;
@@ -88,7 +95,7 @@ input {
 }
 
 .center_btn {
-  margin: 2rem auto 1rem auto;
+  margin: 2.5rem auto 1rem auto;
   display: flex;
   height: 40px;
   width: 100%;
@@ -98,7 +105,7 @@ input {
   width: 75%;
   height: 40px;
   display: flex;
-  border-right: 2px solid getBlue(nav);
+  border-right: 2px solid dark(text);
 }
 
 .google {
@@ -106,6 +113,7 @@ input {
   height: 40px;
   text-align: center;
   display: flex;
+  color: white;
 }
 
 i {

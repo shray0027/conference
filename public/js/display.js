@@ -6,7 +6,6 @@ const navItems = document.querySelectorAll(".menu-nav__item");
 const register = document.querySelector(".register");
 const login = document.querySelector(".login");
 const optBtn = document.querySelector(".optBtn");
-const heading = document.querySelector(".changable");
 const dis = document.querySelector(".dis");
 const add = document.querySelector(".add");
 const option = document.querySelector(".option_full_center");
@@ -38,7 +37,7 @@ function toggle() {
     login.style.display = "none";
     showLogin = true;
     optBtn.innerHTML = "Sign in";
-    heading.textContent = "Sign up...";
+
     setTimeout(()=>{
       alert("password should contain:\n 1. minimum 8 characters \n 2. A small case letter (eg a ,b) \n 3. An upper case letter (eg A ,B) \n 4. A number (eg 1,2) \n 5. A special symbol (eg @$#)");
     },500);
@@ -48,7 +47,7 @@ function toggle() {
     login.style.display = "block";
     showLogin = false;
     optBtn.innerHTML = "Sign up";
-    heading.textContent = "Login...";
+
     
   }
 }
