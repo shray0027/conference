@@ -38,7 +38,7 @@ const getUser= (id)=>{
 }
 
 const getUsersInRoom= (room)=>{
-    return  conferenceUsers.filter((user)=>user.room===room) 
+    return  conferenceUsers.filter((user)=>user.room===room).sort() 
 }
 
 

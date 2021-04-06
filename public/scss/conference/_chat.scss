@@ -52,13 +52,15 @@
             }
         }
         &_msg{
-            flex-grow:1;
+           height:100%;
             width: 100%;
             background: dark(btnBack);
             overflow-y: scroll;
             display: block;
             color: dark(text);
             .messages-div{
+                height: 100%;
+                overflow-y: scroll;
                 display: flex;
                 flex-direction:column ;
                 .joinDetail{

@@ -50,6 +50,23 @@ mongoose.connect(url,{
 
 //SERIALISE AND DESERIALISE USER
 
+var GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+passport.use(new GoogleStrategy({
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: "http://localhost:3000/auth/google/options"
+  },
+  function(accessToken, refreshToken, profile, done) {
+       User.findOrCreate({ name:profile.displayName,googleId: profile.id }, function (err, user) {
+        // console.log(profile);
+         return done(err, user);
+       });
+  }
+));
+
+
+
 passport.use(User.createStrategy());
 passport.serializeUser(function(user, done) {
     done(null, user.id);
@@ -117,13 +134,23 @@ app.post("/login", (req, res) => {
       }
     });
   });
+  app.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile'] }));
+
+app.get('/auth/google/options', 
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/options');
+  });
 app.get("/logout",(req,res)=>{
   req.logout();
   res.redirect("/");
 })
 app.get("/options",(req,res)=>{
   if(req.isAuthenticated()){
-    res.render("options");
+    res.render("options",{
+      initialName : req.user.name.slice(0,1)
+    });
   } else {
     res.redirect("/login");
   }
@@ -135,8 +162,6 @@ app.get("/join",(req,res)=>{
   } else {
     res.redirect("/login");
   }
-  
-
 })
 
 io.on('connection',(socket)=>{
@@ -153,11 +178,10 @@ io.on('connection',(socket)=>{
       users:getUsersInRoom(user.room)
     })
     callback();
-  
   })
   socket.on("message",(message,callback)=>{
-    const user = getUser(socket.id);
-    io.to(user.room).emit('message',generateMessage(user.username,message));
+    const {username,room} = getUser(socket.id);
+    io.to(room).emit('message',generateMessage(username,message));
     callback();
   })
   socket.on('disconnect',()=>{
@@ -193,16 +217,6 @@ app.get("/end",(req,res)=>{
     res.redirect("/login");
   }
 })
-
-
-
-
-
-
-
-
-
-
 
 let port = process.env.PORT || 3000;
 server.listen(port,()=>{
