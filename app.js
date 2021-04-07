@@ -219,7 +219,7 @@ app.get("/end",(req,res)=>{
 })
 app.get("*",(req,res)=>{
   if(req.isAuthenticated()){
-    res.status(404).send();
+    res.status(404);
     res.render("404",{
       initialName : req.user.name.slice(0,1)
     });
