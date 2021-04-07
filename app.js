@@ -217,7 +217,17 @@ app.get("/end",(req,res)=>{
     res.redirect("/login");
   }
 })
-
+app.get("*",(req,res)=>{
+  if(req.isAuthenticated()){
+    res.status(404).send();
+    res.render("404",{
+      initialName : req.user.name.slice(0,1)
+    });
+  }else {
+    res.status(404);
+    res.render("404Not");
+  }
+});
 let port = process.env.PORT || 3000;
 server.listen(port,()=>{
     console.log(`server is deployed on port ${port}`);
