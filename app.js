@@ -97,7 +97,7 @@ app.get("/login",(req,res)=>{
   if(req.isAuthenticated()){
     res.redirect("/options");
   } else {
-    res.render("login");
+    res.render("login",{display:'none',message:'none'});
   }
 });
 app.post("/register",(req,res)=>{
@@ -117,23 +117,45 @@ app.post("/register",(req,res)=>{
 
     )
 });
-app.post("/login", (req, res) => {
-    const userN = new User({
-      username: req.body.username,
-      password: req.body.password
-    });
-
-    req.login(userN, function(err) {
-      if (err) {
-        console.log(err);
-        res.redirect("/login");
-      } else {
-        passport.authenticate('local')(req,res,()=>{
-          res.redirect("/options");
-      })
-      }
-    });
+app.post('/login', function(req, res, next) {
+  const user = new User({
+    username: req.body.username,
+    password: req.body.password
   });
+  passport.authenticate('local', function(err, user, info) {
+    if (err) {
+      return next(err); // will generate a 500 error
+    }
+    // Generate a JSON response reflecting authentication status
+    if (! user) {
+    
+     return res.render("login",{ display:'block',message : 'check username or password' }); 
+    }
+    req.login(user, function(err){
+      if(err){
+        return next(err);
+      }
+      res.redirect("/options");       
+    });
+  })(req, res, next);
+});
+// app.post("/login", (req, res) => {
+//     const userN = new User({
+//       username: req.body.username,
+//       password: req.body.password
+//     });
+
+//     req.login(userN, function(err) {
+//       if (err) {
+//         console.log(err);
+//         res.redirect("/login");
+//       } else {
+//         passport.authenticate('local')(req,res,()=>{
+//           res.redirect("/options");
+//       })
+//       }
+//     });
+//   });
   app.get('/auth/google',
   passport.authenticate('google', { scope: ['profile'] }));
 
@@ -172,22 +194,22 @@ io.on('connection',(socket)=>{
         return callback(error);
     }
     socket.join(user.room);
-    socket.emit('message',generateMessage("chat bot","Welcome!"));
-    socket.broadcast.to(user.room).emit('connected',generateMessage(user.username," joined!! at "));
+    socket.emit('message',generateMessage("chat bot","yellow","Welcome!"));
+    socket.broadcast.to(user.room).emit('connected',generateMessage(user.username,user.avatarColor," joined!! at "));
     io.to(user.room).emit('roomData',{
       users:getUsersInRoom(user.room)
     })
     callback();
   })
   socket.on("message",(message,callback)=>{
-    const {username,room} = getUser(socket.id);
-    io.to(room).emit('message',generateMessage(username,message));
+    const {username,avatarColor,room} = getUser(socket.id);
+    io.to(room).emit('message',generateMessage(username,avatarColor,message));
     callback();
   })
   socket.on('disconnect',()=>{
     const user = removeUser(socket.id);
     if(user){
-        io.to(user.room).emit('disconnected',generateMessage(user.username, " disconnected at "));
+        io.to(user.room).emit('disconnected',generateMessage(user.username,user.avatarColor," disconnected at "));
         io.to(user.room).emit('roomData',{
           users:getUsersInRoom(user.room)
         })

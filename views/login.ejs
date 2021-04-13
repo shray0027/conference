@@ -28,8 +28,12 @@
                 <div class="block">
                   <p class="label">Password</p>
                   <input type="password" name="password" required />
+                  <div class="status-message">
+                    <p style="display:<%=display%>;"><i class="far fa-times-circle"></i><%=message%></p>
+                  </div>
                 </div>
               </div>
+             
               <div class="center_btn">
                 <button class="blueBtn submit">submit</button>
               </div>
@@ -49,6 +53,9 @@
                 <div class="block">
                   <p class="label">Confirm password</p>
                   <input type="password" class="cpass" required />
+                  <div class="status-message">
+                    <p style="display:<%=display%>;"><i class="far fa-times-circle"></i><%=message%></p>
+                  </div>
                 </div>
               </div>
               <div class="center_btn">

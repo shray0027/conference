@@ -95,7 +95,7 @@ input {
 }
 
 .center_btn {
-  margin: 2.5rem auto 1rem auto;
+  margin: 3.3rem auto 1rem auto;
   display: flex;
   height: 40px;
   width: 100%;
@@ -115,7 +115,15 @@ input {
   display: flex;
   color: white;
 }
-
+.status-message{
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: end;
+  color: red;
+  i{
+    margin-right: 10px;
+  }
+}
 i {
   margin: auto;
 }

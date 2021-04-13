@@ -54,4 +54,6 @@ function toggle() {
 function remove(){
         add.style.display="none";
 }
-localStorage.clear();
+if( localStorage.previousMeeting){
+  localStorage.removeItem("previousMeeting");
+}

@@ -66,7 +66,7 @@
 	</div>
 	<script class="messageTemplate" type="text/html">
 		<div class="message">
-							<div class="message-username" >
+							<div style="color:{{color}}" class="message-username" >
 								<p >{{username}}</p>
 							</div>
 							<div class="message-content">
@@ -95,7 +95,12 @@
 		<ul class="users-list">
 			{{#users}}
 			<li class="users-list-name">
-				<p>{{username}}</p>
+				<div class="users-list-name-container">
+					<div style="background: {{avatarColor}};" class="circle-image">
+						<p>S</p>
+					</div>
+					<p>{{username}}</p>
+				</div>
 			</li>
 			{{/users}}
 		</ul>
