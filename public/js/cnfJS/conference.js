@@ -38,7 +38,8 @@ const autoscroll = () => {
         messages.scrollTop = messages.scrollHeight
     }
 }
-socket.emit('join',{username,avatarColor,room},(error)=>{
+const usernameInitial=username.slice(0,1);
+socket.emit('join',{username,avatarColor,room,usernameInitial},(error)=>{
     if(error){
         alert(error);
         location.href="/";
