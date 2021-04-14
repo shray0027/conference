@@ -10,6 +10,7 @@ const messageTemplate=document.querySelector(".messageTemplate").innerHTML;
 const disconnectTemplate=document.querySelector(".disconnectTemplate").innerHTML;
 const usersDataTemplate=document.querySelector(".usersDataTemplate").innerHTML;
 const joinTemplate=document.querySelector(".joinTemplate").innerHTML;
+const partNoTemplate=document.querySelector(".partNoTemplate").innerHTML;
 const avatarColor=localStorage.getItem('avatarColor');
 const {username,room}=Qs.parse(location.search,{ignoreQueryPrefix:true});
 const socket= io();
@@ -70,7 +71,11 @@ socket.on('roomData',({users})=>{
     const html = Mustache.render(usersDataTemplate,{
         users
     });
-    document.querySelector(".main_right_chat_usr").innerHTML=html;
+    const number= users.length;
+    const htmlPart = Mustache.render(partNoTemplate,{
+       number
+    });
+    document.querySelector(".participants").innerHTML=htmlPart;
 })
 socket.on('disconnected',(message)=>{
     const html = Mustache.render(disconnectTemplate,{
