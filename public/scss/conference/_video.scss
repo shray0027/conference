@@ -2,5 +2,15 @@
     .main_left_video{
         flex-grow:1;
         width: 100%;
+        .video-grid{
+            display: grid;
+            grid-template-columns: repeat(auto-fill,300px);
+            grid-auto-rows: 300px;
+        }
+        video{
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+        }
     }
 }

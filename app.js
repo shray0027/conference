@@ -10,16 +10,21 @@ const passportLocalMongoose=require("passport-local-mongoose");
 const findOrCreate = require("mongoose-findorcreate");
 const search = require(__dirname+"/utils/binarySearch.js");
 const qoutes = require(__dirname+"/utils/qoutes.js");
-const {generateMessage} = require(__dirname+"/utils/message.js");
-const {addUser,removeUser,getUser,getUsersInRoom}= require(__dirname+"/utils/users.js");
-const socketio = require("socket.io");
 const app=express();
 const server =  http.createServer(app);
+const socketio = require("socket.io");
 const io = socketio(server);
+const { ExpressPeerServer }=require("peer");
+const peerServer = ExpressPeerServer(server,{
+  debug:true
+})
+const {generateMessage} = require(__dirname+"/utils/message.js");
+const {addUser,removeUser,getUser,getUsersInRoom}= require(__dirname+"/utils/users.js");
 //MIDDLEWARES 
 
 app.set("view engine","ejs");
 app.use(express.static("public"));
+app.use('/peerjs',peerServer);
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -126,7 +131,6 @@ app.post('/login', function(req, res, next) {
     if (err) {
       return next(err); // will generate a 500 error
     }
-    // Generate a JSON response reflecting authentication status
     if (! user) {
     
      return res.render("login",{ display:'block',message : 'check username or password' }); 
@@ -139,23 +143,6 @@ app.post('/login', function(req, res, next) {
     });
   })(req, res, next);
 });
-// app.post("/login", (req, res) => {
-//     const userN = new User({
-//       username: req.body.username,
-//       password: req.body.password
-//     });
-
-//     req.login(userN, function(err) {
-//       if (err) {
-//         console.log(err);
-//         res.redirect("/login");
-//       } else {
-//         passport.authenticate('local')(req,res,()=>{
-//           res.redirect("/options");
-//       })
-//       }
-//     });
-//   });
   app.get('/auth/google',
   passport.authenticate('google', { scope: ['profile'] }));
 
