@@ -175,14 +175,16 @@ app.get("/join",(req,res)=>{
 
 io.on('connection',(socket)=>{
   
-  socket.on('join',(options,callback)=>{
+  socket.on('join',(options,peerID,callback)=>{
+    console.log(peerID);
     const {error,user} = addUser({id:socket.id,...options});
     if(error){
         return callback(error);
     }
     socket.join(user.room);
     socket.emit('message',generateMessage("chat bot","yellow","Welcome!"));
-    socket.broadcast.to(user.room).emit('connected',generateMessage(user.username,user.avatarColor," joined!! at "));
+    socket.broadcast.to(user.room).emit('socket-connected',generateMessage(user.username,user.avatarColor," joined!! at "));
+    socket.broadcast.to(user.room).emit('peer-connected',peerID);
     io.to(user.room).emit('roomData',{
       users:getUsersInRoom(user.room)
     })

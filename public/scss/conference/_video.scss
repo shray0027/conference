@@ -4,12 +4,12 @@
         width: 100%;
         .video-grid{
             display: grid;
-            grid-template-columns: repeat(auto-fill,300px);
-            grid-auto-rows: 300px;
+            grid-template-columns: repeat(auto-fill,250px);
+            grid-auto-rows: 200px;
         }
         video{
-            width: 300px;
-            height: 300px;
+            width: 250px;
+            height: 200px;
             object-fit: cover;
         }
     }

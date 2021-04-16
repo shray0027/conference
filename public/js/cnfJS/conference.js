@@ -1,5 +1,9 @@
 
 
+
+
+
+
 const messages = document.querySelector(".messages-div"); 
 const messageForm=document.querySelector(".messageForm");
 const messageFormInput=document.querySelector("#input-chat");
@@ -13,43 +17,60 @@ const partNoTemplate=document.querySelector(".partNoTemplate").innerHTML;
 const avatarColor=localStorage.getItem('avatarColor');
 
 const {username,room}=Qs.parse(location.search,{ignoreQueryPrefix:true});
+const usernameInitial=username.slice(0,1);
+document.title="Conference - "+room;
 
 const socket= io();
 
 const myPeer = new Peer(undefined,{
     host:'/',
-    port:"443",
+    port:"3000",
     path:'/peerjs'
 });
+myPeer.on('open',peerID=>{
+    console.log(peerID);
 
-// const myVideo=document.createElement('video');
-// myVideo.muted = true;
-
-// navigator.mediaDevices.getUserMedia({
-//     video:true,
-//     audio:true
-// }).then(stream =>{
-//     addVideoStream(myVideo,stream);
-// });
-
-
-
-document.title="Conference - "+room;
-
-
-
-const usernameInitial=username.slice(0,1);
-
-myPeer.on('open',id=>{
-    console.log(id);
-})
-
-socket.emit('join',{username,avatarColor,room,usernameInitial},(error)=>{
+socket.emit('join',{username,avatarColor,room,usernameInitial},peerID,(error)=>{
     if(error){
         alert(error);
         location.href="/";
     }
 });
+
+})
+
+
+const myVideo=document.createElement('video');
+myVideo.muted = true;
+
+navigator.mediaDevices.getUserMedia({
+    video:true,
+    audio:false
+}).then(stream =>{
+    addVideoStream(myVideo,stream);
+    myPeer.on('call',call=> {
+          call.answer(stream); 
+          const video = document.createElement('video');
+          call.on('stream', userVideoStream=> {
+            addVideoStream(video,userVideoStream);
+      });
+    });
+    socket.on('peer-connected',(peerID)=>{
+        connectToNewUser(peerID,stream);
+    })
+});
+
+
+const connectToNewUser=(peerID,stream)=>{
+    const call = myPeer.call(peerID,stream)
+    const video = document.createElement('video');
+    call.on('stream',userVideoStream =>{
+        addVideoStream(video,userVideoStream);
+    })
+}
+
+
+
 
 
 socket.on('message',(message)=>{
@@ -62,7 +83,7 @@ socket.on('message',(message)=>{
     messages.insertAdjacentHTML('beforeend',html);
 
 });
-socket.on('connected',(message)=>{
+socket.on('socket-connected',(message,id)=>{
     const html = Mustache.render(joinTemplate,{
         username:message.username,
         message:message.text,
