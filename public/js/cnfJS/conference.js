@@ -20,11 +20,14 @@ const {username,room}=Qs.parse(location.search,{ignoreQueryPrefix:true});
 const usernameInitial=username.slice(0,1);
 document.title="Conference - "+room;
 
+//join part 
+
+
 const socket= io();
 
 const myPeer = new Peer(undefined,{
     host:'/',
-    port:"443",
+    port:"3000",
     path:'/peerjs'
 });
 myPeer.on('open',peerID=>{
@@ -40,13 +43,19 @@ socket.emit('join',{username,avatarColor,room,usernameInitial},peerID,(error)=>{
 })
 
 
+
+// video audeo part 
+
+
+let myVideoStream;
 const myVideo=document.createElement('video');
 myVideo.muted = true;
 
 navigator.mediaDevices.getUserMedia({
     video:true,
-    audio:false
+    audio:true
 }).then(stream =>{
+    myVideoStream=stream;
     addVideoStream(myVideo,stream);
     myPeer.on('call',call=> {
           call.answer(stream); 
@@ -69,6 +78,34 @@ const connectToNewUser=(peerID,stream)=>{
     })
 }
 
+const muteUnmute = () => {
+    let enabled = myVideoStream.getAudioTracks()[0].enabled;
+    if (enabled) {
+      myVideoStream.getAudioTracks()[0].enabled = false;
+    } else {
+      myVideoStream.getAudioTracks()[0].enabled = true;
+    }
+  }
+  
+  const stopVideo = () => {
+    let enabled = myVideoStream.getVideoTracks()[0].enabled;
+    if (enabled) {
+      myVideoStream.getVideoTracks()[0].enabled = false;
+    } else {
+      myVideoStream.getVideoTracks()[0].enabled = true;
+    }
+  }
+
+  function addVideoStream(video,stream){
+    video.srcObject=stream;
+    video.addEventListener('loadedmetadata',()=>{
+        video.play()
+    })
+    videoGrid.append(video);
+}
+
+
+// chat sockets
 
 
 
@@ -128,10 +165,3 @@ messageForm.addEventListener("submit",(e)=>{
     })
 });
 
-function addVideoStream(video,stream){
-    video.srcObject=stream;
-    video.addEventListener('loadedmetadata',()=>{
-        video.play()
-    })
-    videoGrid.append(video);
-}
