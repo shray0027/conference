@@ -176,7 +176,6 @@ app.get("/join",(req,res)=>{
 io.on('connection',(socket)=>{
   
   socket.on('join',(options,peerID,callback)=>{
-    console.log(peerID);
     const {error,user} = addUser({id:socket.id,...options});
     if(error){
         return callback(error);
@@ -185,6 +184,17 @@ io.on('connection',(socket)=>{
     socket.emit('message',generateMessage("chat bot","yellow","Welcome!"));
     socket.broadcast.to(user.room).emit('socket-connected',generateMessage(user.username,user.avatarColor," joined!! at "));
     socket.broadcast.to(user.room).emit('peer-connected',peerID);
+    socket.on('disconnect',()=>{
+      const user = removeUser(socket.id);
+      if(user){
+          io.to(user.room).emit('disconnected',generateMessage(user.username,user.avatarColor," disconnected at "));
+          io.to(user.room).emit('roomData',{
+            users:getUsersInRoom(user.room)
+          })
+      }
+      socket.broadcast.to(user.room).emit('peer-disconnected',peerID);
+    })
+
     io.to(user.room).emit('roomData',{
       users:getUsersInRoom(user.room)
     })
@@ -194,15 +204,6 @@ io.on('connection',(socket)=>{
     const {username,avatarColor,room} = getUser(socket.id);
     io.to(room).emit('message',generateMessage(username,avatarColor,message));
     callback();
-  })
-  socket.on('disconnect',()=>{
-    const user = removeUser(socket.id);
-    if(user){
-        io.to(user.room).emit('disconnected',generateMessage(user.username,user.avatarColor," disconnected at "));
-        io.to(user.room).emit('roomData',{
-          users:getUsersInRoom(user.room)
-        })
-    }
   })
   })
 app.get("/create",(req,res)=>{

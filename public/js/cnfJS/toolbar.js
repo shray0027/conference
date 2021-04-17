@@ -20,20 +20,20 @@ chat.addEventListener("click",()=>{
 let toggleMic=true;
 mic.addEventListener("click",()=>{
     if(toggleMic){
-        mic.innerHTML='<i class="fas fa-microphone"></i>';
+        mic.innerHTML='<i class="fas fa-microphone-slash"></i>';
         toggleMic=false;
     } else {
-        mic.innerHTML='<i class="fas fa-microphone-slash"></i>';
+        mic.innerHTML='<i class="fas fa-microphone"></i>';
         toggleMic=true;
     }
 })
 let toggleVideo=true;
 video.addEventListener("click",()=>{
     if(toggleVideo){
-        video.innerHTML='<i class="fas fa-video"></i>';
+        video.innerHTML='<i class="fas fa-video-slash"></i>';
         toggleVideo=false;
     } else {
-        video.innerHTML='<i class="fas fa-video-slash"></i>';
+        video.innerHTML='<i class="fas fa-video"></i>';
         toggleVideo=true;
     }
 })
