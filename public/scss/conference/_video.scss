@@ -11,12 +11,15 @@
             flex-wrap: wrap;
         }
         video{
-            min-height: 200px;
-            max-height: 330px;
-            margin: 1rem auto;
+          height: 250px;
+            margin: 1rem ;
+            width:330px;
             max-width:330px;
-            min-width: 330px;
-            background: dark(hover);
+            background: black;
+            background-image: url("/img/loading.gif");
+            background-size: 53px;
+            background-repeat: no-repeat;
+            background-position: center;
             flex: calc(100% / 3);
             text-align: center;
             line-height: 100px;
