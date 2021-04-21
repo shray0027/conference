@@ -1,16 +1,24 @@
 @mixin video {
     .main_left_video{
+        display: flex;
         flex-grow:1;
         width: 100%;
+        max-height:98vh;
         .video-grid{
-            display: grid;
-            grid-template-columns: repeat(auto-fill,250px);
-            grid-auto-rows: 200px;
+            padding:50px;
+            margin:auto;
+            display: flex;
+            flex-wrap: wrap;
         }
         video{
-            width: 250px;
-            height: 200px;
-            object-fit: cover;
+            min-height: 200px;
+            margin: 1rem auto;
+            max-width:330px;
+            background: dark(hover);
+            flex: calc(100% / 3);
+            text-align: center;
+            line-height: 100px;
         }
+        
     }
 }

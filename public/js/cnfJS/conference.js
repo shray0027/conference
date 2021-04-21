@@ -27,7 +27,7 @@ const socket= io();
 
 const myPeer = new Peer(undefined,{
     host:'/',
-    port:"3000",
+    port:"443",
     path:'/peerjs'
 });
 myPeer.on('open',peerID=>{
@@ -116,7 +116,7 @@ navigator.mediaDevices.getUserMedia({
     video:true,
     audio:true
 }).then(stream =>{
-    myVideoStream=stream;
+    myVideoStream=stream
     addVideoStream(myVideo,stream);
     myPeer.on('call',call=> {
           call.answer(stream); 
