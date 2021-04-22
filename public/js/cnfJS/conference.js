@@ -15,7 +15,7 @@ const usersDataTemplate=document.querySelector(".usersDataTemplate").innerHTML;
 const joinTemplate=document.querySelector(".joinTemplate").innerHTML;
 const partNoTemplate=document.querySelector(".partNoTemplate").innerHTML;
 const avatarColor=localStorage.getItem('avatarColor');
-
+const mainLeftVideo=document.querySelector(".main_left_video").innerHTML;
 const {username,room}=Qs.parse(location.search,{ignoreQueryPrefix:true});
 const usernameInitial=username.slice(0,1);
 document.title="Conference - "+room;
@@ -31,7 +31,7 @@ const myPeer = new Peer(undefined,{
     path:'/peerjs'
 });
 myPeer.on('open',peerID=>{
-    console.log(peerID);
+    //console.log(peerID);
 
 socket.emit('join',{username,avatarColor,room,usernameInitial},peerID,(error)=>{
     if(error){
@@ -126,11 +126,12 @@ navigator.mediaDevices.getUserMedia({
       });
     });
     socket.on('peer-connected',(peerID)=>{
+       // console.log("connected"+peerID);
         connectToNewUser(peerID,stream);
     })
 });
 socket.on('peer-disconnected',(peerID)=>{
-    console.log(peerID);
+   // console.log("disconnected"+peerID);
     if(peers[peerID]) peers[peerID].close()
 })
 
@@ -145,6 +146,7 @@ function connectToNewUser(peerID,stream){
         video.remove();
     })
     peers[peerID]=call;
+    console.log(peers);
 }
 const muteUnmute = () => {
     let enabled = myVideoStream.getAudioTracks()[0].enabled;

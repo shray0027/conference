@@ -180,6 +180,7 @@ io.on('connection',(socket)=>{
     if(error){
         return callback(error);
     }
+    // console.log(peerID)
     socket.join(user.room);
     socket.emit('message',generateMessage("chat bot","yellow","Welcome!"));
     socket.broadcast.to(user.room).emit('socket-connected',generateMessage(user.username,user.avatarColor," joined!! at "));
@@ -240,7 +241,7 @@ app.get("*",(req,res)=>{
     res.render("404Not");
   }
 });
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 443;
 server.listen(port,()=>{
     console.log(`server is deployed on port ${port}`);
 })
