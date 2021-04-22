@@ -9,8 +9,6 @@
             display:flex;
         }
         .video-grid{
-            padding:50px;
-            max-width: 100%;
             margin:auto;
             display: flex;
             flex-wrap: wrap;
@@ -19,6 +17,7 @@
         video{
             max-height: 250px;
             min-height:200px;
+            padding: 0;
             margin: 1rem ;
             min-width:250px;
             max-width:330px;
