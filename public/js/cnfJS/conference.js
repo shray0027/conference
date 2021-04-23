@@ -171,7 +171,6 @@ const muteUnmute = () => {
     video.addEventListener('loadedmetadata',()=>{
         video.play()
     })
-    video.controls=true;
     videoGrid.append(video);
 }
 
