@@ -1,0 +1,31 @@
+@mixin errorMSG {
+    .error-div{
+        display: none;
+        position: absolute;
+        height:50px;
+        background: dark(chatMsg);
+        right:20px;
+        top:20px;
+        border-left: 2px solid #eb5757;
+       .inner-div{
+           display: flex;
+           height: 100%;
+           position: relative;
+           color:white;
+           .cross{
+               position: absolute;
+               cursor: pointer;
+               top:5px;
+               right: 10px;
+               color: grey;
+               font-size: .9rem;
+           }
+           .error-msg{
+               margin: auto;
+               text-align: center;
+               margin-left: 1.2rem;
+               margin-right: 2rem;
+           }
+       }
+    }
+}

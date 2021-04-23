@@ -35,8 +35,8 @@ myPeer.on('open',peerID=>{
 
 socket.emit('join',{username,avatarColor,room,usernameInitial},peerID,(error)=>{
     if(error){
-        alert(error);
-        location.href="/";
+        localStorage.setItem("error",error);
+        location.href="/join";
     }
 });
 

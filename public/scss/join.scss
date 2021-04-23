@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 @import "./config";
 @import "./resets";
+@import "./join/error";
 *{
   padding: 0;
   margin: 0;
@@ -38,6 +39,7 @@ button{
   border-radius: 100px;
   border: none;
 }
+@include errorMSG;
 .left-item > button:hover{
   background: rgba(255,255,255,0.5);
 }

@@ -18,7 +18,7 @@ const addUser=({id,username,avatarColor,room,usernameInitial}) =>{
         //validate username 
         if(existingUser){
             return {
-                error:"Username is in use!"
+                error:"Username already exist in room!"
             }
         }
         const user = {id,username,avatarColor,room,usernameInitial}
