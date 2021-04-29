@@ -58,12 +58,12 @@ button {
   font-size: 35px;
   font-weight: lighter;
 }
-.white iframe {
+.white .iframe {
   margin-top: 30px;
   width: 100%;
   height: 500px;
 }
-iframe{
+.iframe{
   border: none;
 }
 /* how */
@@ -252,7 +252,7 @@ color: #1CD3D6;
       /* margin-bottom: 50px; */
       padding-bottom: 50px;
     }
-    .white iframe{
+    .white .iframe{
       height: 220px;
     }
     .white div h1 {
