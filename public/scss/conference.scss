@@ -3,9 +3,12 @@
 @import "./resets";
 @import "./config";
 @import "./conference/chat";
-
 @import "./conference/toolbar";
 @import "./conference/video";
+@import "./conference/details";
+body{
+    position: relative;
+}
 
 .main{
     overflow-x: hidden;
@@ -29,4 +32,11 @@
     }
    
 }
+.active{
+    background: dark(btnBack);
+}
 
+a{
+    text-decoration: none;
+    color: rgb(25, 108, 231);
+}

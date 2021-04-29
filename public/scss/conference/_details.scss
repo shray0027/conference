@@ -1,0 +1,87 @@
+.options-main{
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    color: white;
+    font-family: lato;
+    .crossInfoBtn{
+        position: absolute;
+        top: 20px;
+        right:20px;
+        height: 50px;
+        width: 50px;
+        background-color: dark(btnBack);
+        border-radius: 50px;
+        font-size: 1.5rem;
+        display: flex;
+        &>i{
+            margin: auto;
+        }
+    }
+    .crossInfoBtn:hover{
+        background: dark(hover);
+    }
+    &-container{
+        margin: auto;
+        width:700px;
+        height:500px;
+        background: dark(chatBack);
+        display: flex;
+        border-radius: 10px;
+        //border: 1px solid rgb(61, 61, 61);
+        flex-direction: row;
+        &-left{
+            width: 25%;
+            height: 100%;
+            border-right: 1px solid rgb(61, 61, 61);
+            &-list{
+                list-style-type: none;
+                width: 100%;
+                text-transform: uppercase;
+                text-align: center;
+                &-item{
+                    margin: 20px auto;
+                    padding: 10px 0;
+                }
+            }
+        }
+        &-right{
+            height: 100%;
+            width: 75%;
+            &-details{
+                height: 100%;
+                width: 100%;
+                display: flex;
+                flex-direction: coloumn;
+                position:relative;
+                .copyBtn{
+                    position: absolute;
+                    top: 20px;
+                    right: 20px;
+                    font-size: 1.5rem;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50px;
+                    background: dark(btnBack);
+                    cursor: pointer;
+                    display: flex;
+                    &>i{
+                        margin: auto;
+                    }
+                    &:hover{
+                        background: dark(hover);
+                    }
+                }    
+                & >p{
+                    font-family: arial;
+                    line-height: 1.4;
+                    width: 90%;
+                    margin: auto;
+                }            
+            }
+        }
+    }
+}

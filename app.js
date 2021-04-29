@@ -190,7 +190,8 @@ io.on('connection',(socket)=>{
     })
 
     io.to(user.room).emit('roomData',{
-      users:getUsersInRoom(user.room)
+      users:getUsersInRoom(user.room),
+      roomName:user.room
     })
     callback();
   })

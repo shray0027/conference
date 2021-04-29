@@ -19,9 +19,15 @@ const mainLeftVideo=document.querySelector(".main_left_video").innerHTML;
 const {username,room}=Qs.parse(location.search,{ignoreQueryPrefix:true});
 const usernameInitial=username.slice(0,1);
 document.title="Conference - "+room;
-
 //join part 
-
+const copy = () => {
+    const el = document.createElement('textarea');
+    el.value =username+" invites you to join the Conference.\n\nMeet link : https://conference-jam.herokuapp.com\n\nRoom name :"+document.querySelector(".roomName").innerHTML+"\n\nConference is a video conferencing app developed by student of J.C.Bose university of technology,YMCA ,Faridabad."
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+};
 
 const autoscroll = () => {
     // New message element
@@ -82,7 +88,8 @@ socket.on('socket-connected',(message,id)=>{
     messages.insertAdjacentHTML('beforeend',html);
 
 })
-socket.on('roomData',({users})=>{
+socket.on('roomData',({users,roomName})=>{
+    document.querySelector(".roomName").innerHTML=roomName;
     const html = Mustache.render(usersDataTemplate,{
         users
     });
