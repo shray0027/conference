@@ -60,7 +60,7 @@ var GoogleStrategy = require('passport-google-oauth20').Strategy;
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "https://conference-jam.herokuapp.com/auth/google/options"
+    callbackURL: "https://conference-jam.herokuapp.com/auth/google/join"
   },
   function(accessToken, refreshToken, profile, done) {
        User.findOrCreate({ name:profile.displayName,googleId: profile.id }, function (err, user) {
@@ -87,7 +87,7 @@ passport.serializeUser(function(user, done) {
 
 app.get("/",(req,res)=>{
   if(req.isAuthenticated()){
-    res.redirect("/options");
+    res.redirect("/join");
   } else {
     res.render("index");
   }
@@ -100,7 +100,7 @@ app.get("/qoutes",(req,res)=>{
 })
 app.get("/login",(req,res)=>{
   if(req.isAuthenticated()){
-    res.redirect("/options");
+    res.redirect("/join");
   } else {
     res.render("login",{display:'none',message:'none'});
   }
@@ -116,7 +116,7 @@ app.post("/register",(req,res)=>{
                 console.log(err);
             }
             passport.authenticate('local')(req,res,()=>{
-                res.redirect("/options");
+                res.redirect("/join");
             })
         }
 
@@ -139,35 +139,28 @@ app.post('/login', function(req, res, next) {
       if(err){
         return next(err);
       }
-      res.redirect("/options");       
+      res.redirect("/join");       
     });
   })(req, res, next);
 });
   app.get('/auth/google',
   passport.authenticate('google', { scope: ['profile'] }));
 
-app.get('/auth/google/options', 
+app.get('/auth/google/join', 
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
-    res.redirect('/options');
+    res.redirect('/join');
   });
 app.get("/logout",(req,res)=>{
   req.logout();
   res.redirect("/");
 })
-app.get("/options",(req,res)=>{
-  if(req.isAuthenticated()){
-    res.render("options",{
-      initialName : req.user.name.slice(0,1)
-    });
-  } else {
-    res.redirect("/login");
-  }
-  
-})
+
 app.get("/join",(req,res)=>{
   if(req.isAuthenticated()){
-    res.render("join");
+    res.render("join",{
+      initialName : req.user.name.slice(0,1)
+    });
   } else {
     res.redirect("/login");
   }
@@ -207,13 +200,6 @@ io.on('connection',(socket)=>{
     callback();
   })
   })
-app.get("/create",(req,res)=>{
-  if(req.isAuthenticated()){
-    res.render("create");
-  } else {
-    res.redirect("/login");
-  }
-})
 app.get("/conference",(req,res)=>{
   if(req.isAuthenticated()){
     res.render("conference")
@@ -230,6 +216,7 @@ app.get("/end",(req,res)=>{
     res.redirect("/login");
   }
 })
+
 app.get("*",(req,res)=>{
   if(req.isAuthenticated()){
     res.status(404);
@@ -241,7 +228,26 @@ app.get("*",(req,res)=>{
     res.render("404Not");
   }
 });
+
 let port = process.env.PORT || 443;
 server.listen(port,()=>{
     console.log(`server is deployed on port ${port}`);
 })
+
+
+// app.get("/options",(req,res)=>{
+//   if(req.isAuthenticated()){
+//     res.render("options",{
+//       initialName : req.user.name.slice(0,1)
+//     });
+//   } else {
+//     res.redirect("/login");
+//   }
+// })
+// app.get("/create",(req,res)=>{
+//   if(req.isAuthenticated()){
+//     res.render("create");
+//   } else {
+//     res.redirect("/login");
+//   }
+// })

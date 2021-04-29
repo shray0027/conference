@@ -23,6 +23,22 @@ document.title="Conference - "+room;
 //join part 
 
 
+const autoscroll = () => {
+    // New message element
+    const $newMessage = messages.lastElementChild
+    const newMessageStyles = getComputedStyle($newMessage)
+    const newMessageMargin = parseInt(newMessageStyles.marginBottom)
+    const newMessageHeight = $newMessage.offsetHeight + newMessageMargin
+    const visibleHeight = messages.offsetHeight
+    const containerHeight = messages.scrollHeight
+
+    const scrollOffset = messages.scrollTop + visibleHeight
+
+    if (containerHeight - newMessageHeight <= scrollOffset) {
+        messages.scrollTop = messages.scrollHeight
+    }
+}
+
 const socket= io();
 
 const myPeer = new Peer(undefined,{
@@ -55,7 +71,7 @@ socket.on('message',(message)=>{
         createdAt:moment(message.createdAt).format('h:mm a')
     });
     messages.insertAdjacentHTML('beforeend',html);
-
+    autoscroll();
 });
 socket.on('socket-connected',(message,id)=>{
     const html = Mustache.render(joinTemplate,{

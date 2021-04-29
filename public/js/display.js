@@ -47,7 +47,6 @@ function toggle() {
     login.style.display = "block";
     showLogin = false;
     optBtn.innerHTML = "Sign up";
-
     
   }
 }

@@ -66,7 +66,7 @@
            height:100%;
             width: 100%;
             background: dark(btnBack);
-            overflow-y: scroll;
+            overflow-y: hidden;
             display: block;
             color: dark(text);
             .messages-div{

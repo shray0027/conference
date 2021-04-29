@@ -4,7 +4,7 @@
         <title>JOIN - a meeting </title>
     </head>
     <body>
-        <div class="nav">
+        <!-- <div class="nav">
             <div class="left-item">
                 <button class="back-button"  onclick="window.location.href = '/options'">
                     <i class="fas fa-long-arrow-alt-left"></i>
@@ -15,7 +15,8 @@
                     logout
                 </button>
             </div>
-        </div>
+        </div> -->
+        <%- include("partials/nav2"); -%> 
         <div class='ripple-background'>
 
             <div class="main">
@@ -52,6 +53,8 @@
             <div class='circle mediun shade4'></div>
             <div class='circle small shade5'></div>
           </div>
+          <script src="/js/display.js"></script>
+          <script src="/js/displayName.js"></script>
           <script src="/js/errorMSG.js"></script>
     </body>
 </html>
