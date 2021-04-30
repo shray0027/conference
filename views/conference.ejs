@@ -16,8 +16,11 @@
 		<div class="options-main-container">
 			<div class="options-main-container-left">
 				<ul class="options-main-container-left-list">
-					<li class="options-main-container-left-list-item active">
+					<li class="options-main-container-left-list-item active" id="detail">
 						Meet details
+					</li>
+					<li class="options-main-container-left-list-item" id="help">
+						Help
 					</li>
 				</ul>
 			</div>
@@ -26,7 +29,36 @@
 					<div class="copyBtn" onclick="copy()">
 						<i class="far fa-copy"></i>
 					</div>
-					<p class="meetDetails">Tell your friends to join this conference fast.<br><br> Meet link : <a href="https://conference-jam.herokuapp.com">https://conference-jam.herokuapp.com</a><br><br> Room name : <span class="roomName"></span><br><br> Conference is a video conferencing app developed by student of <a href="">J.C.Bose university of technology,YMCA ,Faridabad</a> </p>
+					<p class="meetDetails">Tell your friends to join this conference fast.<br><br> Meet link : <a href="https://conference-jam.herokuapp.com">https://conference-jam.herokuapp.com</a><br><br> Room name : <span class="roomName"></span><br><br> Conference is a video conferencing app developed by students of <a href="https://jcboseust.ac.in/">J.C.Bose university of technology,YMCA ,Faridabad</a> </p>
+				</div>
+				<div class="options-main-container-right-help">
+					<h1>HELP MANUAL</h1>
+					<h4><a href="#blankScreen">1. Blank Screen</a></h4>
+					<h4><a href="#audio">2. Audio</a></h4>
+					<h4><a href="#video">3. Video</a></h4>
+					<section id="blankScreen">
+						<h2>Blank screen</h2>
+						<p>When you join if a blank screen appears as shown below.</p>
+						<img src="/img/blankscreen.png" class="img1" alt="blank screen">
+						<p>To fix this problem click on the video btn which is displayed on the right side of url panel as shown below.</p>
+						<img src="/img/video.png" class="img2" alt="video image">
+						<p>Now give audio and video access to the website and REFRESH.</p>
+						<img src="/img/accessscreen.png" class="img3" alt="access image">
+					</section>
+					<section id="audio">
+						<h2>Audio</h2>
+						<p>If you want to mute or lower the sound of other ,then RIGHT CLICK on the respective user's video you want to lower or mute and choose the option " SHOW CONTROLS "</p>
+						<img src="/img/showcontrols.png" class="img4" alt="showcontrols image">
+						<p>Now click on mic icon and adjust or mute the user as shown below.</p>
+						<img src="/img/mute.png" class="img5" alt="muteuser image">
+					</section>
+					<section id="video">
+						<h2>Video</h2>
+						<p>If you want to fullscreen somebodies video ,then RIGHT CLICK on the respective user's video and choose the option " SHOW CONTROLS "</p>
+						<img src="/img/showcontrols.png" class="img6" alt="showcontrols image">
+						<p>Now click on the fullscreen option as shown below.</p>
+						<img src="/img/fullscreen.png" class="img7" alt="muteuser image">
+					</section>
 				</div>
 			</div>
 		</div>
@@ -149,6 +181,7 @@
 	<script src="/js/cnfJS/userDetails.js"></script>
 	<script src="/js/cnfJS/sidebar.js"></script>
     <script src="/js/cnfJS/toolbar.js"></script>
+	<script src="/js/cnfJS/info.js"></script>
 </body>
 
 </html>
