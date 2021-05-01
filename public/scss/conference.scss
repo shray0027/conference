@@ -49,7 +49,8 @@ a{
         display: none;
     }
     .mobile-main{
-        display: block;
+        display: flex;
+        flex-direction: column;
         background: dark(videoBack);
         font-family: 'Lato',Helvetica, sans-serif;
         height: 100%;
@@ -63,6 +64,7 @@ a{
             }
         }
         &-buttons{
+            flex-grow: 1;
             width: 100%;
             display: flex;
             flex-direction: column;

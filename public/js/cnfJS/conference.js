@@ -1,8 +1,3 @@
-let viewport = document.querySelector('meta[name="viewport"]');
-console.log(viewport.content);
-const desktopMode=()=>{
-    viewport.setAttribute('content', 'width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no');
-}
 
 
 
