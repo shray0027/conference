@@ -1,5 +1,5 @@
 
-
+const userList={}
 const messages = document.querySelector(".messages-div"); 
 const messageForm=document.querySelector(".messageForm");
 const messageFormInput=document.querySelector("#input-chat");
@@ -152,6 +152,7 @@ navigator.mediaDevices.getUserMedia({
 socket.on('peer-disconnected',(peerID)=>{
    // console.log("disconnected"+peerID);
     if(peers[peerID]) peers[peerID].close()
+    
 })
 
 
