@@ -1,7 +1,5 @@
 
 
-console.log(window.innerWidth);
-if(window.innerWidth>500){
 const messages = document.querySelector(".messages-div"); 
 const messageForm=document.querySelector(".messageForm");
 const messageFormInput=document.querySelector("#input-chat");
@@ -196,6 +194,3 @@ const muteUnmute = () => {
 }
 
 
-} else {
-    document.title="not for mobile";
-}
